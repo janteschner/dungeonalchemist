@@ -8,6 +8,11 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager Instance { get; private set; }
 
     public Attack[] availableAttacks;
+    public Attack FirstAttack;
+    public Attack SecondAttack;
+
+    public GameObject ButtonPrefab;
+    public Transform ButtonParent;
 
     public int hp;
  
@@ -17,9 +22,17 @@ public class PlayerManager : MonoBehaviour
         { 
             Destroy(this); 
         } 
-        else 
+        else
         { 
             Instance = this; 
+        }
+    }
+
+    public void LoadAttacks()
+    {
+        foreach (var attack in availableAttacks)
+        {
+            Instantiate(ButtonPrefab, ButtonParent);
         }
     }
 
@@ -33,6 +46,18 @@ public class PlayerManager : MonoBehaviour
         var chosenAttack = availableAttacks[r];
         Debug.Log("Player chose attack " + chosenAttack.attackName + " with " + chosenAttack.baseDamage + " damage for first attack!");
         return chosenAttack;
+    }
+
+    public void ChoseAttackOne()
+    {
+        if (availableAttacks.Length == 0)
+        {
+            this.FirstAttack = CombatManager.Instance.defaultAttack;
+        }
+        int r = Random.Range(0, availableAttacks.Length);
+        var chosenAttack = availableAttacks[r];
+        Debug.Log("Player chose attack " + chosenAttack.attackName + " with " + chosenAttack.baseDamage + " damage for first attack!");
+        this.FirstAttack = chosenAttack;
     }
     
     public Attack ChooseSecondAttack(Attack firstAttack)
@@ -52,6 +77,25 @@ public class PlayerManager : MonoBehaviour
         Debug.Log("Player chose attack " + secondAttack.attackName + " with " + secondAttack.baseDamage + " damage for second attack!");
         return secondAttack;
     }
+
+    public void ChoseAttackTwo()
+    {
+        if (availableAttacks.Length == 0)
+        {
+            this.SecondAttack = CombatManager.Instance.defaultAttack;
+        }
+
+        //Choose an attack from the array that is not firstAttack
+        Attack secondAttack = this.FirstAttack;
+        while (secondAttack == this.FirstAttack)
+        {
+            int r = Random.Range(0, availableAttacks.Length);
+            secondAttack = availableAttacks[r];
+        }
+        Debug.Log("Player chose attack " + secondAttack.attackName + " with " + secondAttack.baseDamage + " damage for second attack!");
+        this.SecondAttack = secondAttack;
+    }
+
 
     public void SetStartingHp(int startingHp)
     {

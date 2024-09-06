@@ -14,6 +14,8 @@ public class CombatManager : MonoBehaviour
     [SerializeField] public int startingHp;
 
     public bool isPlayerTurn;
+    public bool isEnemyTurn;
+    public bool isCombatOver;
     
     private void Awake()
     {
@@ -46,31 +48,74 @@ public class CombatManager : MonoBehaviour
     void BeginCombat(EnemyType enemyType)
     {
         _enemy.PrepareForCombat(enemyType);
-        var combatOver = false;
+        isCombatOver = false;
         isPlayerTurn = true;
-        while (!combatOver)
+    }
+
+    void Combat()
+    {
+        if (isPlayerTurn)
         {
-            if (isPlayerTurn)
+            PlayerTurn();
+            if (_enemy.IsDead())
             {
-                BeginPlayerTurn();
-                if (_enemy.IsDead())
-                {
-                    Debug.Log("The enemy died!");
-                    combatOver = true;
-                }
-                isPlayerTurn = false;
+                Debug.Log("The enemy died!");
+                isCombatOver = true;
             }
-            else
-            {
-                BeginEnemyTurn();
-                if (_player.IsDead())
-                {
-                    Debug.Log("The player died!");
-                    combatOver = true;
-                }
-                isPlayerTurn = true;
-            }
+
+            isPlayerTurn = false;
         }
+        else
+        {
+            EnemyTurn();
+            if (_player.IsDead())
+            {
+                Debug.Log("The player died!");
+                isCombatOver = true;
+            }
+
+            isPlayerTurn = true;
+        }
+    }
+
+    public void CombatCycle()
+    {
+        Combat();
+        if (isCombatOver)
+        {
+            EndCombat();
+        }
+
+        Combat();
+        if (isCombatOver)
+        {
+            EndCombat();
+        }
+    }
+
+    void PlayerTurn()
+    {
+        Debug.Log("Player's turn! (Player is at " + _player.hp + " HP)");
+        var firstAttack = _player.FirstAttack;
+        var secondAttack = _player.SecondAttack;
+        
+        var firstAttackDamage = _enemy.CalculateDamage(firstAttack);
+        _enemy.TakeDamage(firstAttackDamage);
+        var secondAttackDamage = _enemy.CalculateDamage(secondAttack);
+        _enemy.TakeDamage(secondAttackDamage);
+    }
+
+    void EnemyTurn()
+    {
+        Debug.Log("Enemy's turn! (Enemy is at " + _enemy.hp + " HP)");
+        var attack = _enemy.ChooseAttack();
+        var damage = _player.CalculateDamage(attack);
+        _player.TakeDamage(damage);
+
+    }
+
+    void EndCombat()
+    {
         Debug.Log("Combat is over! Checking who won...");
         if (_player.IsDead())
         {
@@ -80,27 +125,6 @@ public class CombatManager : MonoBehaviour
         {
             PlayerWonCombat();
         }
-    }
-
-    void BeginPlayerTurn()
-    {
-        Debug.Log("Player's turn! (Player is at " + _player.hp + " HP)");
-        var firstAttack = _player.ChooseFirstAttack();
-        var secondAttack = _player.ChooseSecondAttack(firstAttack);
-        
-        var firstAttackDamage = _enemy.CalculateDamage(firstAttack);
-        _enemy.TakeDamage(firstAttackDamage);
-        var secondAttackDamage = _enemy.CalculateDamage(secondAttack);
-        _enemy.TakeDamage(secondAttackDamage);
-    }
-
-    void BeginEnemyTurn()
-    {
-        Debug.Log("Enemy's turn! (Enemy is at " + _enemy.hp + " HP)");
-        var attack = _enemy.ChooseAttack();
-        var damage = _player.CalculateDamage(attack);
-        _player.TakeDamage(damage);
-
     }
 
     void PlayerWonCombat()
