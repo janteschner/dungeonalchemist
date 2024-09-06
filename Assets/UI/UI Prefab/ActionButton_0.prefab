@@ -359,6 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionButton: {fileID: 4194735891013332073}
   tweenYValue: 10
+  selectedYValue: 90
   actionButton_SO: {fileID: 11400000, guid: 65e9d730a7d63d84fa3c98e7d3d035ad, type: 2}
   isSelected: 0
 --- !u!1 &9193814711673752314

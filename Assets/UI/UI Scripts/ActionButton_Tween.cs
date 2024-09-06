@@ -9,7 +9,7 @@ public class ActionButton_Tween: MonoBehaviour
     private RectTransform actionButton;
 
     [SerializeField]
-    private float tweenYValue;
+    private float tweenYValue, selectedYValue;
 
     [SerializeField] TweenScriptableObject actionButton_SO;
 
@@ -63,7 +63,7 @@ public class ActionButton_Tween: MonoBehaviour
         idleTween.Pause();
 
         //Play pop-up animation
-        var endValueSelected = actionButton.anchoredPosition.y + 100;
+        var endValueSelected = actionButton.anchoredPosition.y + selectedYValue;
         actionButton.DOAnchorPosY(endValueSelected, actionButton_SO.TweenDuration * 0.5f, actionButton_SO.TweenSnapping);
 
     }
@@ -71,7 +71,7 @@ public class ActionButton_Tween: MonoBehaviour
     private void ActionButton_DeSelectedAnimation()
     {
         //Play pop-down animation
-        var endValueSelected = actionButton.anchoredPosition.y - 100;
+        var endValueSelected = actionButton.anchoredPosition.y - selectedYValue;
         actionButton.DOAnchorPosY(endValueSelected, actionButton_SO.TweenDuration * 0.5f, actionButton_SO.TweenSnapping);
 
         //Have a bit delay
