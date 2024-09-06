@@ -6,10 +6,10 @@ namespace Combat
     [CreateAssetMenu(menuName = "Attack")]
     public class Attack : ScriptableObject
     {
-        [SerializeField] private int baseDamage;
-        [SerializeField] private string attackName;
-        [SerializeField] [CanBeNull] private string attackDescription;
-        [SerializeField] private Element element;
-        [SerializeField] [CanBeNull] private Attack upgradesTo;
+        [SerializeField] public int baseDamage;
+        [SerializeField] public string attackName;
+        [SerializeField] [CanBeNull] public string attackDescription;
+        [SerializeField] public Element element;
+        [SerializeField] [CanBeNull] public Attack upgradesTo;
     }
 }
