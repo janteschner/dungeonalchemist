@@ -10,7 +10,6 @@ using UnityEngine.UI;
 public class ChestScript : MonoBehaviour
 {
     [SerializeField] private RectTransform container;
-    [SerializeField] private RectTransform cardTemplate;
     [SerializeField] private CardScript card1;
     [SerializeField] private CardScript card2;
     [SerializeField] private CardScript card3;
@@ -46,6 +45,7 @@ public class ChestScript : MonoBehaviour
             {
                 return;
             }
+            Debug.Log("targetCard: " + targetCard + " index: " + index + " attack: " + attack.attackName);
             targetCard.SetCard(attack);
 
             cardScripts.Add(targetCard);
