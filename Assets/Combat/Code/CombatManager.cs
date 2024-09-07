@@ -56,7 +56,8 @@ public class CombatManager : MonoBehaviour
     {
         if (isPlayerTurn)
         {
-            PlayerTurn();
+            //PlayerTurn();
+            PlayerManager.Instance.Animator.SetTrigger("Move");
             if (_enemy.IsDead())
             {
                 Debug.Log("The enemy died!");
@@ -67,7 +68,8 @@ public class CombatManager : MonoBehaviour
         }
         else
         {
-            EnemyTurn();
+            //EnemyTurn();
+            EnemyManager.Instance.Animator.SetTrigger("Move");
             if (_player.IsDead())
             {
                 Debug.Log("The player died!");
@@ -93,19 +95,29 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    void PlayerTurn()
+    public void PlayerTurn()
     {
         Debug.Log("Player's turn! (Player is at " + _player.hp + " HP)");
         var firstAttack = _player.FirstAttack;
         var secondAttack = _player.SecondAttack;
         
+        // One big Attack
+        if(firstAttack.element == Element.FIRE || firstAttack.element == Element.ICE || firstAttack.element == Element.VOLT)
+        {
+            PlayerManager.Instance.Animator.SetTrigger("Move");
+        }
+        // Two attacks
+        else
+        {
+
+        }
         var firstAttackDamage = _enemy.CalculateDamage(firstAttack);
         _enemy.TakeDamage(firstAttackDamage);
         var secondAttackDamage = _enemy.CalculateDamage(secondAttack);
         _enemy.TakeDamage(secondAttackDamage);
     }
 
-    void EnemyTurn()
+    public void EnemyTurn()
     {
         Debug.Log("Enemy's turn! (Enemy is at " + _enemy.hp + " HP)");
         var attack = _enemy.ChooseAttack();
