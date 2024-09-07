@@ -62,6 +62,8 @@ public class CombatManager : MonoBehaviour
         PlayerManager.Instance.Animator.SetTrigger("Reset");
         EnemyManager.Instance.Animator.SetTrigger("Reset");
 
+        
+        NotebookShowHide.Instance.ShowFromCompletelyHidden();
         isCombatOver = false;
         isPlayerTurn = true;
         DisplayUIForPlayerTurn();
@@ -181,6 +183,7 @@ public class CombatManager : MonoBehaviour
 
     public void EndCombat()
     {
+        NotebookShowHide.Instance.CompletelyHideNotebook();
         Debug.Log("Combat is over! Checking who won...");
         if (_player.IsDead())
         {

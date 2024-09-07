@@ -45,6 +45,7 @@ public class ActionButtonContainerScript : MonoBehaviour
     {
 
         int numberOfButtons = attacks.Length;
+        
         float containerWidth = GetComponent<RectTransform>().rect.width;
         float spaceForEachButton = containerWidth / numberOfButtons;
         
