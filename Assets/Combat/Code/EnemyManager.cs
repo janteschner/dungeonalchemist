@@ -56,36 +56,43 @@ public class EnemyManager : MonoBehaviour
         Debug.Log("Preparing enemy for combat! Enemy is " + enemyType.enemyName + " with " + Hp + " HP!");
     }
 
-    public int CalculateDamage(Attack attack)
+    public DamageNumberWithInfo CalculateDamage(Attack attack)
     {
         //First, determine if any modifiers apply
         int damage = attack.baseDamage;
+        var isWeak = false;
+        var isResistant = false;
+        var isImmune = false;
         if (_currentEnemyType.IsImmune(attack.element))
         {
             Debug.Log("Enemy is immune to " + attack.element + " damage, so it does Zero damage!");
             damage = 0;
+            isImmune = true;
         }
         else if (_currentEnemyType.IsResistant(attack.element))
         {
             Debug.Log("Enemy is resistant to " + attack.element + " damage, so it's halved!");
             damage = (damage / 2);
+            isResistant = true;
         }
         else if (_currentEnemyType.IsWeak(attack.element))
         {
             Debug.Log("Enemy is weak to " + attack.element + " damage, so it's doubled!");
             damage = (damage * 2);
+            isWeak = true;
         }
         else
         {
             Debug.Log("Enemy is neutral to " + attack.element + " damage");
         }
-        return damage;
+        return new DamageNumberWithInfo(damage, attack.element, isWeak, isResistant, isImmune);
     }
     
-    public void TakeDamage(int damage)
+    public void TakeDamage(DamageNumberWithInfo damageInfo)
     {
-        Debug.Log("Enemy took " + damage + " damage");
-        Hp -= damage;
+        Debug.Log("Enemy took " + damageInfo.damage + " damage");
+        DamageNumberSpawner.Instance.SpawnDamageNumber(damageInfo, true);
+        Hp -= damageInfo.damage;
     }
 
     public bool IsDead()

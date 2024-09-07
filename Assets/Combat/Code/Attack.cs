@@ -18,7 +18,7 @@ namespace Combat
             {
                 //return attack description, but replace #damage with damage number
                 return _attackDescription.Replace("#damage", "<b>"+ baseDamage.ToString()+"</b>")
-                    .Replace("#element", "<color=" + ElementFunctions.GetElementColor(element) + ">" + ElementFunctions.GetElementName(element)+"</color>");
+                    .Replace("#element", "<color=" + ElementFunctions.GetElementColorHexString(element) + ">" + ElementFunctions.GetElementName(element)+"</color>");
             }
             set => _attackDescription = value;
         }

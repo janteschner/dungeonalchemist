@@ -15,5 +15,5 @@ MonoBehaviour:
   baseDamage: 5
   attackName: Healing Potion
   _attackDescription: Heal #damage Health right now!
-  element: 0
+  element: 7
   isHealingPotion: 1

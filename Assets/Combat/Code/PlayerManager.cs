@@ -89,15 +89,16 @@ public class PlayerManager : MonoBehaviour
         hp = startingHp;
     }
     
-    public int CalculateDamage(Attack attack)
+    public DamageNumberWithInfo CalculateDamage(Attack attack)
     {
-        return attack.baseDamage;
+        return new DamageNumberWithInfo(attack.baseDamage, attack.element, false, false, false);
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(DamageNumberWithInfo damageInfo)
     {
-        Debug.Log("Player took " + damage + " damage!");
-        hp -= damage;
+        Debug.Log("Player took " + damageInfo.damage + " damage!");
+        DamageNumberSpawner.Instance.SpawnDamageNumber(damageInfo, false);
+        hp -= damageInfo.damage;
     }
     
     public void Heal(int healing)

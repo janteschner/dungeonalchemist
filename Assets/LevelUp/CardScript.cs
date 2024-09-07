@@ -1,7 +1,7 @@
 using Combat;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class CardScript : MonoBehaviour
 {
@@ -26,6 +26,7 @@ public class CardScript : MonoBehaviour
         description.text = newAttack.attackDescription;
         _attack = newAttack;
         _isUpgradeCard = false;
+        SetIcon(newAttack.element);
     }
     
     public void SetUpgradeCard( Attack newAttack, Attack previousAttack)
@@ -36,6 +37,7 @@ public class CardScript : MonoBehaviour
         _isUpgradeCard = true;
         //halve the size of title
         title.fontSize = 5;
+        SetIcon(newAttack.element);
     }
     public void SetHealingCard( Attack healingAttack)
     {
@@ -44,5 +46,11 @@ public class CardScript : MonoBehaviour
         _attack = healingAttack;
         //halve the size of title
         title.fontSize = 10;
+        SetIcon(healingAttack.element);
+    }
+
+    private void SetIcon(Element element)
+    {
+        elementImage.sprite = UIMappings.Instance.getIconForElement(element);
     }
 }
