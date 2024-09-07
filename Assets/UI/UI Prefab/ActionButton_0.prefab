@@ -469,6 +469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a3c669849ec94a4a86d8f26e01e9698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  comeToFrontTween: {fileID: 11400000, guid: b1d0a0c0f4048e54fb4534b03dc7e32d, type: 2}
 --- !u!114 &4114894075789443964
 MonoBehaviour:
   m_ObjectHideFlags: 0

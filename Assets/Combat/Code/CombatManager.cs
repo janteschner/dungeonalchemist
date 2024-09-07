@@ -56,6 +56,8 @@ public class CombatManager : MonoBehaviour
 
     public void BeginCombat(EnemyType enemyType)
     {
+        NotebookScript.Instance.AddEnemyIfNotPresent(enemyType);
+        NotebookScript.Instance.SwitchToEnemy(enemyType);
         _enemy.PrepareForCombat(enemyType);
         PlayerManager.Instance.Animator.SetTrigger("Reset");
         EnemyManager.Instance.Animator.SetTrigger("Reset");
@@ -69,12 +71,23 @@ public class CombatManager : MonoBehaviour
     {
         if (_player.IsDead() || _enemy.IsDead()) return;
         Debug.Log("Combat cycle beginning!");
+        var firstAttack = _player.FirstAttack;
+        var secondAttack = _player.SecondAttack;
+
         if (isPlayerTurn)
         {
             //PlayerTurn();
-            PlayerManager.Instance.Animator.SetTrigger("Move");
-            
 
+
+            // Elementar Attack first
+            if ((int)firstAttack.element <= 3)
+            {
+                PlayerManager.Instance.Animator.SetTrigger("Shoot");
+            }
+            else if ((int)firstAttack.element >= 3 && (int)firstAttack.element <= 6)
+            {
+                PlayerManager.Instance.Animator.SetTrigger("Move");
+            }
             isPlayerTurn = false;
 
         }
@@ -112,6 +125,7 @@ public class CombatManager : MonoBehaviour
         Combat();
         
     }
+
 
     public void PlayerTurn()
     {
@@ -160,6 +174,7 @@ public class CombatManager : MonoBehaviour
         Debug.Log("Enemy's turn! (Enemy is at " + _enemy.Hp + " HP)");
         var attack = _enemy.ChooseAttack();
         var damage = _player.CalculateDamage(attack);
+        NotebookScript.Instance.AddAttack(_enemy.CurrentEnemyType, attack);
         _player.TakeDamage(damage);
 
     }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3308912800287422002}
   - component: {fileID: 2799192102547518668}
   - component: {fileID: 217196420619811530}
+  - component: {fileID: 2390120215891809013}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -107,6 +108,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2390120215891809013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3792297592557556447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f61d2ae84c956744a687c329f83b501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availableAttacks: []
+  FirstAttack: {fileID: 0}
+  SecondAttack: {fileID: 0}
+  hp: 0
 --- !u!1 &8170286509814759410
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +178,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8769758064351280963, guid: 50db562ad9e69ba48b136a3528849aa1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8769758064351280963, guid: 50db562ad9e69ba48b136a3528849aa1, type: 3}
       propertyPath: m_LocalRotation.w

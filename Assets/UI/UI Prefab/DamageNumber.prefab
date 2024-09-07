@@ -101,6 +101,7 @@ MonoBehaviour:
   _resistant: {fileID: 4689367727924320211}
   _immune: {fileID: 6113332433871424209}
   _text: {fileID: 4206946214898602872}
+  _appearTween: {fileID: 11400000, guid: 866d943b83537ab46be71f1672fc1836, type: 2}
 --- !u!1 &446162232762514580
 GameObject:
   m_ObjectHideFlags: 0

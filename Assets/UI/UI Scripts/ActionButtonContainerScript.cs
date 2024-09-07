@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Combat;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -12,8 +13,13 @@ public class ActionButtonContainerScript : MonoBehaviour
 
     [SerializeField] private GameObject _actionButtonPrefab;
     [SerializeField] private float _maxRotation = 7f;
+    [SerializeField] private float _yDeltaToDisappeared = 800f;
+    [SerializeField] private TweenScriptableObject _disappearTween;
     
     private List<GameObject> _actionButtons = new List<GameObject>();
+
+    private Vector3 normalTransform;
+    private Vector3 disappearedTransform;
     
     private void Awake()
     {
@@ -30,8 +36,9 @@ public class ActionButtonContainerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        normalTransform = transform.position;
+        disappearedTransform = new Vector3(normalTransform.x, normalTransform.y - _yDeltaToDisappeared, normalTransform.z);
         _actionButtonPrefab.SetActive(false);
-        
     }
 
     public void SetAttacks(Attack[] attacks)
@@ -73,9 +80,8 @@ public class ActionButtonContainerScript : MonoBehaviour
     public void AppearAnimation()
     {
         SetAttacks(PlayerManager.Instance.availableAttacks.ToArray());
-        // var group = GetComponent<CanvasGroup>();
-        // group.alpha = 1;
-
+        transform.SetPositionAndRotation(disappearedTransform, Quaternion.identity);
+        transform.DOMove(normalTransform, _disappearTween.TweenDuration, _disappearTween.TweenSnapping).SetEase(_disappearTween.EaseType);
     }
 
     public void DisappearAnimation()
@@ -113,7 +119,9 @@ public class ActionButtonContainerScript : MonoBehaviour
         
         Debug.Log("BeginDisappear!");
         DisableButtons();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
+        transform.DOMove(disappearedTransform, _disappearTween.TweenDuration, _disappearTween.TweenSnapping).SetEase(_disappearTween.EaseType);
+        yield return new WaitForSeconds(0.5f);
         DisappearAnimation();
         CombatManager.Instance.Combat();
         // Code to execute after the delay

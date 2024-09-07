@@ -8,10 +8,13 @@ namespace Combat
     {
         [SerializeField] public int maxHealth;
         [SerializeField] public string enemyName;
+        [SerializeField] public string descriptionBasic;
+        [SerializeField] public string descriptionDetailed;
         [SerializeField] public Element[] immunities;
         [SerializeField] public Element[] resistances;
         [SerializeField] public Element[] weaknesses;
         [SerializeField] public Attack[] availableAttacks;
+        [SerializeField] public Sprite healthbarSprite;
 
         public Attack GetRandomAttack()
         {

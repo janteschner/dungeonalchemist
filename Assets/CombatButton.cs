@@ -27,6 +27,7 @@ public class CombatButton : MonoBehaviour
             {
              //Second attack chosen   
                 PlayerManager.Instance.ChoseAttackTwo(_card.attack);
+                _actionButtonTween.ButtonSelection();
                 ActionButtonContainerScript.Instance.SelectedSecondAttack();
             }
         }

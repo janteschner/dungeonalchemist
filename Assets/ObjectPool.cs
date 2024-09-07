@@ -62,6 +62,15 @@ public class ObjectPool : MonoBehaviour
             case Effects.FIRESTORM:
                 particle = Instantiate(Particles[3], _transform);
                 break;
+            case Effects.FIREBALL:
+                particle = Instantiate(Particles[6], _transform);
+                break;
+            case Effects.ICEBALL:
+                particle = Instantiate(Particles[7], _transform);
+                break;
+            case Effects.VOLTBALL:
+                particle = Instantiate(Particles[8], _transform);
+                break;
         }
 
         particles.Add(particle.GetComponent<ParticleSystem>());

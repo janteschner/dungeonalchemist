@@ -59,12 +59,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 234ac779fc17913458cd13711ab9155b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _DEBUG_attacks:
-  - {fileID: 11400000, guid: 56d92587581a6714583fcb795c28ccf7, type: 2}
-  - {fileID: 11400000, guid: fcf79cb2289bf7f40b21e4b5ce02f2e8, type: 2}
-  - {fileID: 11400000, guid: 45edebd2412a2d246a4d6287d1e5be34, type: 2}
   _actionButtonPrefab: {fileID: 1065543785627071220}
   _maxRotation: 9
+  _yDeltaToDisappeared: 800
+  _disappearTween: {fileID: 11400000, guid: 9ba51144200aad84288eb598f258d2b6, type: 2}
 --- !u!114 &1891581101941254557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,6 +192,10 @@ PrefabInstance:
     - target: {fileID: 4194735891013332073, guid: b407f0bc612dd1045aebe211660fd717, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666019364685314038, guid: b407f0bc612dd1045aebe211660fd717, type: 3}
+      propertyPath: m_fontSize
+      value: 23.7
       objectReference: {fileID: 0}
     - target: {fileID: 7549946719329787765, guid: b407f0bc612dd1045aebe211660fd717, type: 3}
       propertyPath: isSelected

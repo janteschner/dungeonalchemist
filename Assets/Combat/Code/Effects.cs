@@ -9,4 +9,7 @@ public enum Effects
     BASH = 6,
     FLAMES = 7,
     FIRESTORM = 8,
+    FIREBALL = 9,
+    ICEBALL = 10,
+    VOLTBALL = 11
 }

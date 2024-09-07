@@ -50,4 +50,4 @@ MonoBehaviour:
   slashIcon: {fileID: 21300000, guid: caf68f892ba3e684fa11cf68aae31934, type: 3}
   stabIcon: {fileID: 21300000, guid: 9f11d2650b8fd8f479bd144ba30fadc2, type: 3}
   bashIcon: {fileID: 21300000, guid: 63fda6f50d259d745a316c190b26369f, type: 3}
-  healingIcon: {fileID: 21300000, guid: 3cf06cd19d170b74ca0509f97a95b91d, type: 3}
+  healingIcon: {fileID: 21300000, guid: 0741edb7c07e35942944a041f7fe3897, type: 3}
