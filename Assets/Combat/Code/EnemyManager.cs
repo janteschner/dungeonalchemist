@@ -13,7 +13,12 @@ public class EnemyManager : MonoBehaviour
     private EnemyType _currentEnemyType;
     private int hp;
 
+    [SerializeField] private GameObject enemyPrefab;
+    
     public Animator Animator { get; private set; }
+
+    private SpriteRenderer _spriteRenderer;
+    
     public int Hp
     {
         get => hp;
@@ -39,7 +44,8 @@ public class EnemyManager : MonoBehaviour
 
     private void Start()
     {
-        Animator = GetComponent<Animator>();
+        Animator = enemyPrefab.GetComponentInChildren<Animator>();
+        _spriteRenderer = enemyPrefab.GetComponentInChildren<SpriteRenderer>();
     }
 
     public Attack ChooseAttack()
