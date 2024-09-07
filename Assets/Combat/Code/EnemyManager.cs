@@ -12,6 +12,9 @@ public class EnemyManager : MonoBehaviour
     private EnemyType _currentEnemyType;
     public int hp;
 
+    public Animator Animator { get; private set; }
+
+
     private void Awake()
     {
         if (Instance != null && Instance != this) 
@@ -22,6 +25,11 @@ public class EnemyManager : MonoBehaviour
         { 
             Instance = this; 
         }
+    }
+
+    private void Start()
+    {
+        Animator = GetComponent<Animator>();
     }
 
     public Attack ChooseAttack()
@@ -73,5 +81,11 @@ public class EnemyManager : MonoBehaviour
     public bool IsDead()
     {
         return hp <= 0;
+    }
+
+    // Callback for Anim
+    public void OnAnimationAttack()
+    {
+        CombatManager.Instance.EnemyTurn();
     }
 }

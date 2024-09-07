@@ -12,8 +12,7 @@ public class PlayerManager : MonoBehaviour
     public Attack FirstAttack;
     public Attack SecondAttack;
 
-    public GameObject ButtonPrefab;
-    public Transform ButtonParent;
+    public Animator Animator { get; private set; }
 
     public int hp;
  
@@ -28,6 +27,12 @@ public class PlayerManager : MonoBehaviour
             Instance = this; 
         }
     }
+
+    private void Start()
+    {
+        Animator = GetComponent<Animator>();
+    }
+
 
     public void AddAttack(Attack attack)
     {
@@ -116,5 +121,10 @@ public class PlayerManager : MonoBehaviour
     public bool IsDead()
     {
         return hp <= 0;
+    }
+
+    public void OnAnimationAttack()
+    {
+        CombatManager.Instance.PlayerTurn();
     }
 }
