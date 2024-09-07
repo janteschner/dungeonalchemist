@@ -6,5 +6,6 @@
     VOLT = 3,
     SLASH = 4,
     STAB = 5,
-    BASH = 6
+    BASH = 6,
+    HEALING = 7
 }
