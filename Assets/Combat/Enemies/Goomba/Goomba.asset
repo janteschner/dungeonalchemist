@@ -14,9 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   enemyName: Goomba
+  descriptionBasic: 
+  descriptionDetailed: 
   immunities: 
   resistances: 
   weaknesses: 010000000200000003000000
   availableAttacks:
   - {fileID: 11400000, guid: 63fdf6230f45bc04ebf4a4e9879d92ee, type: 2}
   - {fileID: 11400000, guid: ce72e52d54db9564cb2e9744a444b11f, type: 2}
+  healthbarSprite: {fileID: 0}
+  prefab: {fileID: 277001522623733879, guid: 5ba7d8e0a7859a34faeb0e6507de4223, type: 3}

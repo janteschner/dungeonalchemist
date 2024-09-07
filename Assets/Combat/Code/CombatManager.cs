@@ -187,6 +187,7 @@ public class CombatManager : MonoBehaviour
         Debug.Log("Combat is over! Checking who won...");
         if (_player.IsDead())
         {
+            //PlayerManager.Instance
             PlayerDied();
         }
         else

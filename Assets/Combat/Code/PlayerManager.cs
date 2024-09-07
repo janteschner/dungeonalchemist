@@ -14,8 +14,10 @@ public class PlayerManager : MonoBehaviour
     public GameObject shootOrigin;
 
     public Animator Animator { get; private set; }
+    public PlayerAnimationController Controller { get; private set; }
 
     public int hp;
+    [SerializeField] private GameObject PlayerPrefab;
  
     private void Awake()
     {
@@ -31,7 +33,8 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
-        Animator = GetComponent<Animator>();
+        Animator = PlayerPrefab.GetComponentInChildren<Animator>();
+        Controller = PlayerPrefab.GetComponentInChildren<PlayerAnimationController>();
         var randomAttacks = LevelUpScript.Instance.GetStartingAttacks();
         foreach (var attack in randomAttacks)
         {
@@ -111,52 +114,5 @@ public class PlayerManager : MonoBehaviour
     public bool IsDead()
     {
         return hp <= 0;
-    }
-
-    public void OnAnimationAttack()
-    {
-        CombatManager.Instance.PlayerTurn();
-        EnemyManager.Instance.Animator.SetTrigger("Hit");
-        if (EnemyManager.Instance.IsDead())
-        {
-            Debug.Log("The enemy died!");
-            CombatManager.Instance.EndCombat();
-        }
-    }
-
-    public void OnAnimationFinished()
-    {
-        CombatManager.Instance.Combat();
-    }
-
-    public void OnAnimationGameOver()
-    {
-        // Open Menu
-        LevelUpScript.Instance.ShowRandomCards();
-
-        // Reset Combat
-        //CombatManager.Instance.BeginCombat();
-    }
-
-    public void OnAnimationShooting()
-    {
-        switch (FirstAttack.element)
-        {
-            case Element.UNTYPED:
-                break;
-            case Element.FIRE:
-                ObjectPool.Instance.PlayFightFX(shootOrigin.transform, Effects.FIREBALL);
-                break;
-            case Element.ICE:
-                ObjectPool.Instance.PlayFightFX(shootOrigin.transform, Effects.ICEBALL);
-                break;
-            case Element.VOLT:
-                ObjectPool.Instance.PlayFightFX(shootOrigin.transform, Effects.VOLTBALL);
-                break;
-            
-        }
-
-        BulletProjectile.OnProjectileHit += CombatManager.Instance.PlayerTurn;
-
     }
 }

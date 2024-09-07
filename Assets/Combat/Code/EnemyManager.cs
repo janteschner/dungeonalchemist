@@ -14,6 +14,10 @@ public class EnemyManager : MonoBehaviour
     private int hp;
 
     public Animator Animator { get; private set; }
+    public EnemyAnimationController Controller { get; private set; }
+
+    public GameObject currentPrefab { get; private set; }
+
     public int Hp
     {
         get => hp;
@@ -24,6 +28,9 @@ public class EnemyManager : MonoBehaviour
     }
     
     public EnemyType CurrentEnemyType => _currentEnemyType;
+
+    [SerializeField] private GameObject EnemyPrefab;
+    private SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
@@ -39,7 +46,10 @@ public class EnemyManager : MonoBehaviour
 
     private void Start()
     {
-        Animator = GetComponent<Animator>();
+        currentPrefab = EnemyPrefab;
+        spriteRenderer = EnemyPrefab.GetComponentInChildren<SpriteRenderer>();
+        Animator = EnemyPrefab.GetComponentInChildren<Animator>();
+        Controller = EnemyPrefab.GetComponentInChildren<EnemyAnimationController>();
     }
 
     public Attack ChooseAttack()
@@ -53,7 +63,13 @@ public class EnemyManager : MonoBehaviour
     {
         _currentEnemyType = enemyType;
         Hp = enemyType.maxHealth;
-        // TODO: Sprite change for Enemy-type
+        currentPrefab = Instantiate(enemyType.prefab, new Vector3(4.5f, 0, -2), Quaternion.identity);
+
+        spriteRenderer = currentPrefab.GetComponentInChildren<SpriteRenderer>();
+        Animator = currentPrefab.GetComponentInChildren<Animator>();
+        Controller = currentPrefab.GetComponentInChildren<EnemyAnimationController>();
+
+        CombatManager.Instance.fxSpawner = currentPrefab.GetComponentInChildren<FXSpawner>();
 
         Debug.Log("Preparing enemy for combat! Enemy is " + enemyType.enemyName + " with " + Hp + " HP!");
     }
@@ -110,24 +126,4 @@ public class EnemyManager : MonoBehaviour
         return dead;
     }
 
-    // Callback for Anim
-    public void OnAnimationAttack()
-    {
-        CombatManager.Instance.EnemyTurn();
-        PlayerManager.Instance.Animator.SetTrigger("Hit");
-        if (PlayerManager.Instance.IsDead())
-        {
-            Debug.Log("The player died!");
-            CombatManager.Instance.EndCombat();
-        }
-        else
-        {
-            CombatManager.Instance.DisplayUIForPlayerTurn();
-        }
-    }
-
-    public void OnAnimationFinished()
-    {
-        CombatManager.Instance.Combat();
-    }
 }
