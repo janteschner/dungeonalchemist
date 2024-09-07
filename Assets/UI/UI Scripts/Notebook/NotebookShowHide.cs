@@ -43,6 +43,7 @@ public class NotebookShowHide : MonoBehaviour, IPointerEnterHandler, IPointerExi
         notebookTransform.DORotate(endValueSelected, notebookShowHideTween.TweenDuration).SetEase(notebookShowHideTween.EaseType);
         notebookTransform.DOScale(notebookTargetScale, notebookShowHideTween.TweenDuration).SetEase(notebookShowHideTween.EaseType);
         
+        notebookTransform.SetAsLastSibling();
         
         var cardEndRotation = cardsStartRotation + cardsAdditionalRotation;
         var cardEndLocation = cardsStartLocation + cardsAdditionalLocation;
@@ -59,6 +60,7 @@ public class NotebookShowHide : MonoBehaviour, IPointerEnterHandler, IPointerExi
         notebookTransform.DORotate(endValueSelected, notebookShowHideTween.TweenDuration).SetEase(notebookShowHideTween.EaseType);
         notebookTransform.DOScale(notebookStartingScale, notebookShowHideTween.TweenDuration).SetEase(notebookShowHideTween.EaseType);
 
+        notebookTransform.SetAsFirstSibling();
         
         var cardEndRotation = cardsStartRotation;
         var cardEndLocation = cardsStartLocation;
