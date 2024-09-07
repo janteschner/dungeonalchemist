@@ -25,6 +25,9 @@ public class NotebookShowHide : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private Vector3 cardsStartRotation;
     private Vector3 cardsStartingScale;
 
+    private bool completelyHidden = true;
+    private Vector3 completelyHiddenLocation = new Vector3(0f, 500f, 0f);
+
     void Start()
     {
         notebookStartLocation = notebookTransform.position;
@@ -68,5 +71,19 @@ public class NotebookShowHide : MonoBehaviour, IPointerEnterHandler, IPointerExi
         actionCardsTransform.DORotate(cardEndRotation, notebookShowHideTween.TweenDuration).SetEase(notebookShowHideTween.EaseType);
         actionCardsTransform.DOScale(cardsStartingScale, notebookShowHideTween.TweenDuration).SetEase(notebookShowHideTween.EaseType);
 
+    }
+
+    public void CompletelyHideNotebook()
+    {
+        completelyHidden = true;
+        
+        notebookTransform.DOMove(completelyHiddenLocation, 0.5f).SetEase(Ease.InOutCubic);
+    }
+    
+    public void ShowFromCompletelyHidden()
+    {
+        completelyHidden = false;
+        
+        notebookTransform.DOMove(notebookStartLocation, 0.5f).SetEase(Ease.InOutCubic);
     }
 }
