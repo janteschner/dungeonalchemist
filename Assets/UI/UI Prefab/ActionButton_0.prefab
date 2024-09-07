@@ -455,6 +455,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementImage: {fileID: 2373259203133604778}
   frame: {fileID: 7753928563119917437}
+  lvl1Frame: {fileID: 21300000, guid: 0fca133435cdb204c9899db3cd27ecc9, type: 3}
+  lvl2Frame: {fileID: 21300000, guid: 8d9645690758ba749bfff6e28274f323, type: 3}
+  lvl3Frame: {fileID: 21300000, guid: 974170b80f8e0eb4894d655881c99ae9, type: 3}
   title: {fileID: 5992726372720127050}
   description: {fileID: 5666019364685314038}
 --- !u!114 &5018543331486874437
