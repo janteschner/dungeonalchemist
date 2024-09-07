@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33e2e1951f314938b9ef8a539d544063, type: 3}
   m_Name: Shoot
   m_EditorClassIdentifier: 
-  baseDamage: 10
+  baseDamage: 3
   attackName: Shoot
   _attackDescription: Mehr shoot
   element: 2
