@@ -1610,6 +1610,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ActionButtonContainer
       objectReference: {fileID: 0}
+    - target: {fileID: 5637986240663325515, guid: 87910802b223a044c99d1b5e4a0d4b7d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 8941191306402580735, guid: 87910802b223a044c99d1b5e4a0d4b7d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
