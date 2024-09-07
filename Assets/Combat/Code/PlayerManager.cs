@@ -93,4 +93,9 @@ public class PlayerManager : MonoBehaviour
     {
         CombatManager.Instance.PlayerTurn();
     }
+
+    public void OnAnimationFinished()
+    {
+        CombatManager.Instance.Combat();
+    }
 }

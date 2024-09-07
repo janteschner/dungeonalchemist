@@ -55,7 +55,7 @@ public class CombatManager : MonoBehaviour
         DisplayUIForPlayerTurn();
     }
 
-    void Combat()
+    public void Combat()
     {
         if (isPlayerTurn)
         {
@@ -64,7 +64,7 @@ public class CombatManager : MonoBehaviour
             if (_enemy.IsDead())
             {
                 Debug.Log("The enemy died!");
-                isCombatOver = true;
+                EndCombat();
             }
 
             isPlayerTurn = false;
@@ -76,7 +76,7 @@ public class CombatManager : MonoBehaviour
             if (_player.IsDead())
             {
                 Debug.Log("The player died!");
-                isCombatOver = true;
+                EndCombat();
             }
 
             isPlayerTurn = true;

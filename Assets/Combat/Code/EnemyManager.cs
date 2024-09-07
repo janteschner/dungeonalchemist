@@ -88,4 +88,9 @@ public class EnemyManager : MonoBehaviour
     {
         CombatManager.Instance.EnemyTurn();
     }
+
+    public void OnAnimationFinished()
+    {
+        CombatManager.Instance.Combat();
+    }
 }
