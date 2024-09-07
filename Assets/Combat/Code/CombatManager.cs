@@ -36,13 +36,15 @@ public class CombatManager : MonoBehaviour
     {
         _player = PlayerManager.Instance;
         _enemy = EnemyManager.Instance;
+
+        _player.SetStartingHp(startingHp);
+
         BeginNewCombat();
     }
 
     public void BeginNewCombat()
     {
         StartCoroutine(BeginAfter1Second());
-
     }
 
     public IEnumerator BeginAfter1Second()
@@ -54,7 +56,8 @@ public class CombatManager : MonoBehaviour
     public void BeginCombat(EnemyType enemyType)
     {
         _enemy.PrepareForCombat(enemyType);
-        _player.SetStartingHp(startingHp);
+        PlayerManager.Instance.Animator.SetTrigger("Reset");
+        EnemyManager.Instance.Animator.SetTrigger("Reset");
 
         isCombatOver = false;
         isPlayerTurn = true;
@@ -114,17 +117,35 @@ public class CombatManager : MonoBehaviour
         Debug.Log("Player's turn! (Player is at " + _player.hp + " HP)");
         var firstAttack = _player.FirstAttack;
         var secondAttack = _player.SecondAttack;
-        
-        // One big Attack
-        if(firstAttack.element == Element.FIRE || firstAttack.element == Element.ICE || firstAttack.element == Element.VOLT)
-        {
-            // PlayerManager.Instance.Animator.SetTrigger("Move");
-        }
-        // Two attacks
-        else
-        {
 
+        switch (firstAttack.element)
+        {
+            case Element.UNTYPED:
+                break;
+            case Element.FIRE:
+                ObjectPool.Instance.PlayFightFX(EnemyManager.Instance.transform, Effects.FIRE);
+                break;
+            case Element.ICE:
+                ObjectPool.Instance.PlayFightFX(EnemyManager.Instance.transform, Effects.ICE);
+                break;
+            case Element.VOLT:
+                ObjectPool.Instance.PlayFightFX(EnemyManager.Instance.transform, Effects.VOLT);
+                break;
+            case Element.SLASH:
+                if(secondAttack.element == Element.FIRE)
+                    ObjectPool.Instance.PlayFightFX(EnemyManager.Instance.transform, Effects.FIRESTORM);
+                break;
+            case Element.STAB:
+                break;
+            case Element.BASH:
+                if(secondAttack.element == Element.ICE){    }
+                else
+                {
+                    ObjectPool.Instance.PlayFightFX(EnemyManager.Instance.transform, Effects.BASH);
+                }
+                break;
         }
+
         var firstAttackDamage = _enemy.CalculateDamage(firstAttack);
         _enemy.TakeDamage(firstAttackDamage);
         var secondAttackDamage = _enemy.CalculateDamage(secondAttack);

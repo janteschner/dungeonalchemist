@@ -85,6 +85,7 @@ public class EnemyManager : MonoBehaviour
         {
             Debug.Log("Enemy is neutral to " + attack.element + " damage");
         }
+
         return new DamageNumberWithInfo(damage, attack.element, isWeak, isResistant, isImmune);
     }
     
