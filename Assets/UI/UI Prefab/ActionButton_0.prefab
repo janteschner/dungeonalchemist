@@ -222,6 +222,8 @@ GameObject:
   - component: {fileID: 9141330812742185318}
   - component: {fileID: 3151486840096106042}
   - component: {fileID: 7549946719329787765}
+  - component: {fileID: 8095297574564524978}
+  - component: {fileID: 5018543331486874437}
   m_Layer: 5
   m_Name: ActionButton_0
   m_TagString: Untagged
@@ -362,6 +364,32 @@ MonoBehaviour:
   selectedYValue: 90
   actionButton_SO: {fileID: 11400000, guid: 65e9d730a7d63d84fa3c98e7d3d035ad, type: 2}
   isSelected: 0
+--- !u!114 &8095297574564524978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8845358708042257878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ace8d7a2d60024cbedfac0705a0275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: {fileID: 5992726372720127050}
+  description: {fileID: 5666019364685314038}
+--- !u!114 &5018543331486874437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8845358708042257878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a3c669849ec94a4a86d8f26e01e9698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9193814711673752314
 GameObject:
   m_ObjectHideFlags: 0

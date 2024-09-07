@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 2
   attackName: Stabbity Stab
-  attackDescription: Deals 2 Stab Damage
+  _attackDescription: Deals #damage #element Damage
   element: 5
   upgradesTo: {fileID: 0}

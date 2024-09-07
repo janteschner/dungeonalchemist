@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 2
   attackName: Slash
-  attackDescription: Deals 2 Slash Damage
+  _attackDescription: Deals #damage #element Damage
   element: 4
   upgradesTo: {fileID: 11400000, guid: 32e2dfb3bb3f49e40997b2d5625a05a8, type: 2}
