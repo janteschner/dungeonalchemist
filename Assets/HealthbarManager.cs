@@ -28,12 +28,12 @@ public class HealthbarManager : MonoBehaviour
 
     }
 
-    public void SetEnemyHP()
+    public void SetEnemyHP(int newHP)
     {
 
     }
 
-    public void SetPlayerHP()
+    public void SetPlayerHP(int newHP)
     {
 
     }
