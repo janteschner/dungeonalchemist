@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 987478469127585453}
     m_Modifications:
+    - target: {fileID: 1250921106952313304, guid: 4678087190c28ec40904bf3474fe6d37, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6997139125468441612, guid: 4678087190c28ec40904bf3474fe6d37, type: 3}
       propertyPath: m_Name
       value: Lightning Attack Ball
@@ -115,7 +119,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8896628909289349599, guid: e8ea923a92853c54e91a119478aa8722, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6204706540539238041, guid: e8ea923a92853c54e91a119478aa8722, type: 3}
       insertIndex: -1

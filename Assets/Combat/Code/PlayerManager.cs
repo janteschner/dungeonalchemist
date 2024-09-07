@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviour
     public List<Attack> availableAttacks = new List<Attack>();
     public Attack FirstAttack;
     public Attack SecondAttack;
+    public GameObject shootOrigin;
 
     public Animator Animator { get; private set; }
 
@@ -144,13 +145,13 @@ public class PlayerManager : MonoBehaviour
             case Element.UNTYPED:
                 break;
             case Element.FIRE:
-                ObjectPool.Instance.PlayFightFX(transform, Effects.FIREBALL);
+                ObjectPool.Instance.PlayFightFX(shootOrigin.transform, Effects.FIREBALL);
                 break;
             case Element.ICE:
-                ObjectPool.Instance.PlayFightFX(transform, Effects.ICEBALL);
+                ObjectPool.Instance.PlayFightFX(shootOrigin.transform, Effects.ICEBALL);
                 break;
             case Element.VOLT:
-                ObjectPool.Instance.PlayFightFX(transform, Effects.VOLTBALL);
+                ObjectPool.Instance.PlayFightFX(shootOrigin.transform, Effects.VOLTBALL);
                 break;
             
         }
