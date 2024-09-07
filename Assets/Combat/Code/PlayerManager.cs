@@ -114,5 +114,19 @@ public class PlayerManager : MonoBehaviour
     public void OnAnimationAttack()
     {
         CombatManager.Instance.PlayerTurn();
+        EnemyManager.Instance.Animator.SetTrigger("Hit");
+    }
+
+    public void OnAnimationFinished()
+    {
+        CombatManager.Instance.Combat();
+    }
+
+    public void OnAnimationGameOver()
+    {
+        // Open Menu
+
+        // Reset Combat
+        //CombatManager.Instance.BeginCombat();
     }
 }

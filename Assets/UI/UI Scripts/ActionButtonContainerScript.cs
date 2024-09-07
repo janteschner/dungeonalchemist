@@ -115,7 +115,7 @@ public class ActionButtonContainerScript : MonoBehaviour
         DisableButtons();
         yield return new WaitForSeconds(1);
         DisappearAnimation();
-        CombatManager.Instance.CombatCycle();
+        CombatManager.Instance.Combat();
         // Code to execute after the delay
     }
 }

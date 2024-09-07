@@ -37,25 +37,20 @@ public class CombatManager : MonoBehaviour
         _player = PlayerManager.Instance;
         _enemy = EnemyManager.Instance;
 
-        _player.SetStartingHp(startingHp);
         BeginCombat(firstEnemy);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void BeginCombat(EnemyType enemyType)
+    public void BeginCombat(EnemyType enemyType)
     {
         _enemy.PrepareForCombat(enemyType);
+        _player.SetStartingHp(startingHp);
+
         isCombatOver = false;
         isPlayerTurn = true;
         DisplayUIForPlayerTurn();
     }
 
-    void Combat()
+    public void Combat()
     {
         if (isPlayerTurn)
         {
@@ -64,10 +59,15 @@ public class CombatManager : MonoBehaviour
             if (_enemy.IsDead())
             {
                 Debug.Log("The enemy died!");
-                isCombatOver = true;
+                EndCombat();
+            }
+            else
+            {
+
             }
 
             isPlayerTurn = false;
+
         }
         else
         {
@@ -76,11 +76,16 @@ public class CombatManager : MonoBehaviour
             if (_player.IsDead())
             {
                 Debug.Log("The player died!");
-                isCombatOver = true;
+                EndCombat();
             }
+            else
+            {
 
+                DisplayUIForPlayerTurn();
+            }
+            
             isPlayerTurn = true;
-            DisplayUIForPlayerTurn();
+
         }
     }
 
@@ -134,7 +139,7 @@ public class CombatManager : MonoBehaviour
 
     public void EnemyTurn()
     {
-        Debug.Log("Enemy's turn! (Enemy is at " + _enemy.hp + " HP)");
+        Debug.Log("Enemy's turn! (Enemy is at " + _enemy.Hp + " HP)");
         var attack = _enemy.ChooseAttack();
         var damage = _player.CalculateDamage(attack);
         _player.TakeDamage(damage);
@@ -152,17 +157,29 @@ public class CombatManager : MonoBehaviour
         {
             PlayerWonCombat();
         }
+
     }
 
     void PlayerWonCombat()
     {
         Debug.Log("Player won combat!");
 
+        // Move Player
+        PlayerManager.Instance.Animator.SetTrigger("Gameover");
+        // Kill Enemy
+        EnemyManager.Instance.Animator.SetTrigger("Die");
+
     }
 
     void PlayerDied()
     {
         Debug.Log("Player lost!");
-        
+
+
+        // Move Player
+        PlayerManager.Instance.Animator.SetTrigger("Die");
+        // Kill Enemy
+        EnemyManager.Instance.Animator.SetTrigger("Gameover");
+
     }
 }

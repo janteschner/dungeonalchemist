@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Combat;
@@ -10,10 +11,17 @@ public class EnemyManager : MonoBehaviour
 {
     public static EnemyManager Instance { get; private set; }
     private EnemyType _currentEnemyType;
-    public int hp;
+    private int hp;
 
     public Animator Animator { get; private set; }
-
+    public int Hp
+    {
+        get => hp;
+        set
+        {
+            hp = value;
+        }
+    }
 
     private void Awake()
     {
@@ -42,8 +50,10 @@ public class EnemyManager : MonoBehaviour
     public void PrepareForCombat(EnemyType enemyType)
     {
         _currentEnemyType = enemyType;
-        hp = enemyType.maxHealth;
-        Debug.Log("Preparing enemy for combat! Enemy is " + enemyType.enemyName + " with " + hp + " HP!");
+        Hp = enemyType.maxHealth;
+        // TODO: Sprite change for Enemy-type
+
+        Debug.Log("Preparing enemy for combat! Enemy is " + enemyType.enemyName + " with " + Hp + " HP!");
     }
 
     public int CalculateDamage(Attack attack)
@@ -75,17 +85,25 @@ public class EnemyManager : MonoBehaviour
     public void TakeDamage(int damage)
     {
         Debug.Log("Enemy took " + damage + " damage");
-        hp -= damage;
+        Hp -= damage;
     }
 
     public bool IsDead()
     {
-        return hp <= 0;
+        bool dead = Hp <= 0;
+        Debug.Log("isDead Status: "+dead);
+        return dead;
     }
 
     // Callback for Anim
     public void OnAnimationAttack()
     {
         CombatManager.Instance.EnemyTurn();
+        PlayerManager.Instance.Animator.SetTrigger("Hit");
+    }
+
+    public void OnAnimationFinished()
+    {
+        CombatManager.Instance.Combat();
     }
 }
