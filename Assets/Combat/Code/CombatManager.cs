@@ -55,6 +55,8 @@ public class CombatManager : MonoBehaviour
 
     public void BeginCombat(EnemyType enemyType)
     {
+        NotebookScript.Instance.AddEnemyIfNotPresent(enemyType);
+        NotebookScript.Instance.SwitchToEnemy(enemyType);
         _enemy.PrepareForCombat(enemyType);
         PlayerManager.Instance.Animator.SetTrigger("Reset");
         EnemyManager.Instance.Animator.SetTrigger("Reset");
@@ -159,6 +161,7 @@ public class CombatManager : MonoBehaviour
         Debug.Log("Enemy's turn! (Enemy is at " + _enemy.Hp + " HP)");
         var attack = _enemy.ChooseAttack();
         var damage = _player.CalculateDamage(attack);
+        NotebookScript.Instance.AddAttack(_enemy.CurrentEnemyType, attack);
         _player.TakeDamage(damage);
 
     }

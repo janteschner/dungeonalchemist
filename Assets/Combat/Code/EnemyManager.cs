@@ -22,6 +22,8 @@ public class EnemyManager : MonoBehaviour
             hp = value;
         }
     }
+    
+    public EnemyType CurrentEnemyType => _currentEnemyType;
 
     private void Awake()
     {
@@ -93,6 +95,7 @@ public class EnemyManager : MonoBehaviour
     {
         Debug.Log("Enemy took " + damageInfo.damage + " damage");
         DamageNumberSpawner.Instance.SpawnDamageNumber(damageInfo, true);
+        NotebookScript.Instance.AddElement(_currentEnemyType, damageInfo.element);
         Hp -= damageInfo.damage;
     }
 
@@ -100,6 +103,10 @@ public class EnemyManager : MonoBehaviour
     {
         bool dead = Hp <= 0;
         Debug.Log("isDead Status: "+dead);
+        if (dead)
+        {
+            NotebookScript.Instance.UnlockDetailedDescription(_currentEnemyType);
+        }
         return dead;
     }
 
