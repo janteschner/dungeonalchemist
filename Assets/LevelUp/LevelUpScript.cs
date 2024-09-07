@@ -35,6 +35,7 @@ public class LevelUpScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        container.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -197,8 +198,6 @@ public class LevelUpScript : MonoBehaviour
             }
         }
         container.gameObject.SetActive(true);
-        
-        
     }
     
     public void ClickOnCard(int index)
@@ -233,5 +232,14 @@ public class LevelUpScript : MonoBehaviour
             //
             // tempAttackButtons.Clear();
         }
+        container.gameObject.SetActive(false);
+        AfterPlayerMadeChoice();
+        
+
+    }
+
+    private void AfterPlayerMadeChoice()
+    {
+        CombatManager.Instance.BeginNewCombat();
     }
 }

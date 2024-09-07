@@ -100,6 +100,15 @@ public class EnemyManager : MonoBehaviour
     {
         CombatManager.Instance.EnemyTurn();
         PlayerManager.Instance.Animator.SetTrigger("Hit");
+        if (PlayerManager.Instance.IsDead())
+        {
+            Debug.Log("The player died!");
+            CombatManager.Instance.EndCombat();
+        }
+        else
+        {
+            CombatManager.Instance.DisplayUIForPlayerTurn();
+        }
     }
 
     public void OnAnimationFinished()

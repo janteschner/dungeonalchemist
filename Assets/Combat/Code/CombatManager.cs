@@ -36,7 +36,18 @@ public class CombatManager : MonoBehaviour
     {
         _player = PlayerManager.Instance;
         _enemy = EnemyManager.Instance;
+        BeginNewCombat();
+    }
 
+    public void BeginNewCombat()
+    {
+        StartCoroutine(BeginAfter1Second());
+
+    }
+
+    public IEnumerator BeginAfter1Second()
+    {
+        yield return new WaitForSeconds(1);
         BeginCombat(firstEnemy);
     }
 
@@ -52,19 +63,13 @@ public class CombatManager : MonoBehaviour
 
     public void Combat()
     {
+        if (_player.IsDead() || _enemy.IsDead()) return;
+        Debug.Log("Combat cycle beginning!");
         if (isPlayerTurn)
         {
             //PlayerTurn();
             PlayerManager.Instance.Animator.SetTrigger("Move");
-            if (_enemy.IsDead())
-            {
-                Debug.Log("The enemy died!");
-                EndCombat();
-            }
-            else
-            {
-
-            }
+            
 
             isPlayerTurn = false;
 
@@ -73,16 +78,7 @@ public class CombatManager : MonoBehaviour
         {
             //EnemyTurn();
             EnemyManager.Instance.Animator.SetTrigger("Move");
-            if (_player.IsDead())
-            {
-                Debug.Log("The player died!");
-                EndCombat();
-            }
-            else
-            {
-
-                DisplayUIForPlayerTurn();
-            }
+            
             
             isPlayerTurn = true;
 
@@ -105,12 +101,12 @@ public class CombatManager : MonoBehaviour
         {
             EndCombat();
         }
-
-        Combat();
         if (isCombatOver)
         {
             EndCombat();
         }
+        Combat();
+        
     }
 
     public void PlayerTurn()
@@ -146,7 +142,7 @@ public class CombatManager : MonoBehaviour
 
     }
 
-    void EndCombat()
+    public void EndCombat()
     {
         Debug.Log("Combat is over! Checking who won...");
         if (_player.IsDead())

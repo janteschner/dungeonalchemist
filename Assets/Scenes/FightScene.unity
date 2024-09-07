@@ -1146,6 +1146,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelUp
       objectReference: {fileID: 0}
+    - target: {fileID: 2399888823981529160, guid: 4fbb9fb9a3d0f6a4eb8ff7fe2071e432, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6309686905202215390, guid: 4fbb9fb9a3d0f6a4eb8ff7fe2071e432, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.17387076

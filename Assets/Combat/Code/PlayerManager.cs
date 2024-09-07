@@ -115,6 +115,11 @@ public class PlayerManager : MonoBehaviour
     {
         CombatManager.Instance.PlayerTurn();
         EnemyManager.Instance.Animator.SetTrigger("Hit");
+        if (EnemyManager.Instance.IsDead())
+        {
+            Debug.Log("The enemy died!");
+            CombatManager.Instance.EndCombat();
+        }
     }
 
     public void OnAnimationFinished()
@@ -125,6 +130,7 @@ public class PlayerManager : MonoBehaviour
     public void OnAnimationGameOver()
     {
         // Open Menu
+        LevelUpScript.Instance.ShowRandomCards();
 
         // Reset Combat
         //CombatManager.Instance.BeginCombat();
