@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Combat;
 using UnityEngine;
 
@@ -21,6 +22,12 @@ public class PlayerManager : MonoBehaviour
         { 
             Instance = this; 
         }
+    }
+
+    public void AddAttack(Attack attack)
+    {
+        Debug.Log("Adding attack " + attack.attackName + " to player's available attacks!");
+        availableAttacks.Append(attack);
     }
 
     public Attack ChooseFirstAttack()
