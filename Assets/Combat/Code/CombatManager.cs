@@ -36,13 +36,15 @@ public class CombatManager : MonoBehaviour
     {
         _player = PlayerManager.Instance;
         _enemy = EnemyManager.Instance;
+
+        _player.SetStartingHp(startingHp);
+
         BeginNewCombat();
     }
 
     public void BeginNewCombat()
     {
         StartCoroutine(BeginAfter1Second());
-
     }
 
     public IEnumerator BeginAfter1Second()
@@ -54,7 +56,8 @@ public class CombatManager : MonoBehaviour
     public void BeginCombat(EnemyType enemyType)
     {
         _enemy.PrepareForCombat(enemyType);
-        _player.SetStartingHp(startingHp);
+        PlayerManager.Instance.Animator.SetTrigger("Reset");
+        EnemyManager.Instance.Animator.SetTrigger("Reset");
 
         isCombatOver = false;
         isPlayerTurn = true;
@@ -125,6 +128,7 @@ public class CombatManager : MonoBehaviour
         {
 
         }
+
         var firstAttackDamage = _enemy.CalculateDamage(firstAttack);
         _enemy.TakeDamage(firstAttackDamage);
         var secondAttackDamage = _enemy.CalculateDamage(secondAttack);
