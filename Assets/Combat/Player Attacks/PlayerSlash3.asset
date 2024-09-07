@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerSlash3
   m_EditorClassIdentifier: 
   baseDamage: 5
-  attackName: Slash 3
+  attackName: Rending Slash
   _attackDescription: Deals #damage #element Damage
   element: 4
-  upgradesTo: {fileID: 0}
+  isHealingPotion: 0

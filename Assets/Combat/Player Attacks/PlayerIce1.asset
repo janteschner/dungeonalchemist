@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerIce1
   m_EditorClassIdentifier: 
   baseDamage: 2
-  attackName: Ice
+  attackName: Freeze
   _attackDescription: Deals #damage #element Damage
   element: 2
-  upgradesTo: {fileID: 0}
+  isHealingPotion: 0

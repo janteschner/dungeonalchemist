@@ -16,4 +16,4 @@ MonoBehaviour:
   attackName: Hammer Strike
   _attackDescription: Deals #damage #element Damage
   element: 6
-  upgradesTo: {fileID: 0}
+  isHealingPotion: 0

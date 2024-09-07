@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviour
     public List<Attack> availableAttacks = new List<Attack>();
     public Attack FirstAttack;
     public Attack SecondAttack;
+    public GameObject shootOrigin;
 
     public Animator Animator { get; private set; }
     public PlayerAnimationController Controller { get; private set; }
@@ -114,5 +115,4 @@ public class PlayerManager : MonoBehaviour
     {
         return hp <= 0;
     }
-
 }

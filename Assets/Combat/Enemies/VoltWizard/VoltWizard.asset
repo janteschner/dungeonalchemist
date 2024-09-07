@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f68c46d7ea41eebe17ad6102607f14, type: 3}
+  m_Name: VoltWizard
+  m_EditorClassIdentifier: 
+  maxHealth: 23
+  enemyName: Stormcaller
+  descriptionBasic: A wizard who summons lightning to shock and stun enemies
+  descriptionDetailed: Unpredictable and chaotic, they delight in the thrill of unleashing
+    raw, uncontrollable energy
+  immunities: 03000000
+  resistances: 04000000
+  weaknesses: 05000000
+  availableAttacks:
+  - {fileID: 11400000, guid: 3d6f7baa709f5b149af50c7f29e204bc, type: 2}
+  - {fileID: 11400000, guid: ba722a023687ff549925c17972cde798, type: 2}
+  healthbarSprite: {fileID: 21300000, guid: e3c3eb109668df6498da0546fcec5864, type: 3}

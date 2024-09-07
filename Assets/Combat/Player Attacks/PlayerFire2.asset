@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PlayerFire2
   m_EditorClassIdentifier: 
   baseDamage: 3
-  attackName: Strong Fire
+  attackName: Flame
   _attackDescription: Deals #damage #element Damage
   element: 1
+  isHealingPotion: 0

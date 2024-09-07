@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f68c46d7ea41eebe17ad6102607f14, type: 3}
+  m_Name: FireWizard
+  m_EditorClassIdentifier: 
+  maxHealth: 16
+  enemyName: Pyromancer
+  descriptionBasic: A sorcerer who burns enemies with powerful fire magic
+  descriptionDetailed: They are hot-tempered and impulsive, often setting their surroundings
+    ablaze without a second thought
+  immunities: 01000000
+  resistances: 04000000
+  weaknesses: 02000000
+  availableAttacks:
+  - {fileID: 11400000, guid: 4613eb511b22e1946b7b734b07006238, type: 2}
+  healthbarSprite: {fileID: 21300000, guid: d0c489c5a3eeee84ca4c68877c9cd88f, type: 3}

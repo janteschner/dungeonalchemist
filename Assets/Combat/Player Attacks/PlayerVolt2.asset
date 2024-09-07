@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PlayerVolt2
   m_EditorClassIdentifier: 
   baseDamage: 3
-  attackName: Volt 2
+  attackName: Shock
   _attackDescription: Deals #damage #element Damage
   element: 3
+  isHealingPotion: 0
