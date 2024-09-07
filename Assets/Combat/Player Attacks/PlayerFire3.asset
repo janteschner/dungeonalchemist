@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PlayerFire3
   m_EditorClassIdentifier: 
   baseDamage: 5
-  attackName: Super Strong Fire
+  attackName: Inferno
   _attackDescription: Deals #damage #element Damage
   element: 1
+  isHealingPotion: 0

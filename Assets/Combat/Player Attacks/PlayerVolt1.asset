@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerVolt1
   m_EditorClassIdentifier: 
   baseDamage: 2
-  attackName: Volt
+  attackName: Spark
   _attackDescription: Deals #damage #element Damage
   element: 3
-  upgradesTo: {fileID: 0}
+  isHealingPotion: 0

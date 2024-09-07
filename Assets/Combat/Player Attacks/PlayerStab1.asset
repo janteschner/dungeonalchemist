@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerStab1
   m_EditorClassIdentifier: 
   baseDamage: 2
-  attackName: Stabbity Stab
+  attackName: Lance Poke
   _attackDescription: Deals #damage #element Damage
   element: 5
-  upgradesTo: {fileID: 0}
+  isHealingPotion: 0
