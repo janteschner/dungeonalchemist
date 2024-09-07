@@ -17,8 +17,8 @@ MonoBehaviour:
   descriptionBasic: A green-skinned fellow from the upper floors of the dungeon
   descriptionDetailed: They seem to not shy back from getting up close and personal
     with their foes...
-  immunities: 
-  resistances: 
+  immunities: 03000000
+  resistances: 02000000
   weaknesses: 01000000
   availableAttacks:
   - {fileID: 11400000, guid: 847da01dbe1b3104fbf8fb6cf4b8fac5, type: 2}

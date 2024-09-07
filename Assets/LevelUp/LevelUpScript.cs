@@ -161,13 +161,16 @@ public class LevelUpScript : MonoBehaviour
             if (index == 1)
             {
                 targetCard = card2;
-            }else if (index == 2)
+            }
+            else if (index == 2)
             {
                 targetCard = card3;
-            }else if (index > 2)
+            }
+            else if (index > 2)
             {
                 return;
             }
+
             Debug.Log("targetCard: " + targetCard + " index: " + index + " attack: " + attack.attackName);
 
             if (attack.isHealingPotion)
@@ -178,25 +181,28 @@ public class LevelUpScript : MonoBehaviour
             {
                 bool isCardAnUpgradeCard = DoesPlayerHaveAttackOfElement(attack.element);
                 Debug.Log("Card " + attack.attackName + " is an upgrade card: " + isCardAnUpgradeCard);
-                
+
                 if (isCardAnUpgradeCard)
                 {
                     //Search the upgrade tree for the attack that came before this one
                     var tree = GetTreeForElement(attack.element);
                     var attackIndex = tree.attacks.ToList().IndexOf(attack);
-                    Debug.Log("Found attack " + attack.attackName + " at index " + attackIndex + " in tree for element " + attack.element);
+                    Debug.Log("Found attack " + attack.attackName + " at index " + attackIndex +
+                              " in tree for element " + attack.element);
                     var lastAttack = tree.attacks[attackIndex - 1];
-                    
-                    targetCard.SetUpgradeCard(attack, lastAttack);   
+
+                    targetCard.SetUpgradeCard(attack, lastAttack);
                 }
                 else
                 {
                     targetCard.SetCard(attack);
                 }
-                cardScripts.Add(targetCard);
-                index++;
+
             }
+            cardScripts.Add(targetCard);
+            index++;
         }
+
         container.gameObject.SetActive(true);
     }
     

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Combat;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,12 +17,10 @@ public class DamageNumberScript : MonoBehaviour
     [SerializeField] private Image _immune;
     [SerializeField] private TMP_Text _text;
 
+    [SerializeField] private TweenScriptableObject _appearTween;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
+    // Start is called before the first frame upda
 
     // Update is called once per frame
     void Update()
@@ -39,19 +38,49 @@ public class DamageNumberScript : MonoBehaviour
         _weak.gameObject.SetActive(damageInfo.isWeak);
         _resistant.gameObject.SetActive(damageInfo.isResistant);
         _immune.gameObject.SetActive(damageInfo.isImmune);
-        StartCoroutine(Animate());
+        StartCoroutine(DestroyAfter1Second());
+        
+        var normalSize = new Vector3(0.5f, 0.5f, 0.5f);
+        Debug.Log("normalSize: " + normalSize);
+
+        var targetScale = normalSize * 1.2f;
+        var elasticity = 0.33f;
+        var vibrato = 10;
+        if (damageInfo.isWeak)
+        {
+            targetScale = normalSize * 1.4f;
+            vibrato = 15;
+            elasticity = 0.4f;
+        }
+
+        if (damageInfo.isResistant)
+        {
+            targetScale = normalSize * 1.1f;
+            vibrato = 5;
+            elasticity = 0.22f;
+        }
+
+        if (damageInfo.isImmune)
+        {
+            targetScale = normalSize * 1.1f;
+            vibrato = 3;
+            elasticity = 0.1f;
+        }
+        transform.DOPunchScale(targetScale, 0.4f, vibrato, elasticity);
+
+    }
+
+    void DisappearAnimation()
+    {
+        var targetScale = Vector3.zero;
+        transform.DOScale(targetScale, 0.3f).SetEase(Ease.InOutCubic);
     }
     
-    IEnumerator Animate()
+    IEnumerator DestroyAfter1Second()
     {
-        //slowly move panel up, then delete after 1 second
-        float time = 0;
-        while (time < 1)
-        {
-            time += Time.deltaTime;
-            // _panel.transform.position += new Vector3(0, 30f, 0) * Time.deltaTime;
-            yield return null;
-        }
+        yield return new WaitForSeconds(1f);
+        DisappearAnimation();
+        yield return new WaitForSeconds(0.3f);
         Destroy(gameObject);
     }
 }
