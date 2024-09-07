@@ -1,29 +1,42 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Combat;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ActionButtonContainerScript : MonoBehaviour
 {
-    [SerializeField] private Attack[] _DEBUG_attacks;
+    public static ActionButtonContainerScript Instance { get; private set; }
+
     [SerializeField] private GameObject _actionButtonPrefab;
     [SerializeField] private float _maxRotation = 7f;
+    
+    private List<GameObject> _actionButtons = new List<GameObject>();
+    
+    private void Awake()
+    {
+        if (Instance != null && Instance != this) 
+        { 
+            Destroy(this); 
+        } 
+        else 
+        { 
+            Instance = this; 
+        }
+    }
     
     // Start is called before the first frame update
     void Start()
     {
-        SetAttacks(_DEBUG_attacks);
         _actionButtonPrefab.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         
     }
 
     public void SetAttacks(Attack[] attacks)
     {
+
         int numberOfButtons = attacks.Length;
         float containerWidth = GetComponent<RectTransform>().rect.width;
         float spaceForEachButton = containerWidth / numberOfButtons;
@@ -33,7 +46,6 @@ public class ActionButtonContainerScript : MonoBehaviour
         
         float centerCardIndex = ((float)numberOfButtons - 1) / 2;
         
-        Debug.Log("centerCardIndex: " + centerCardIndex);
 
         
         for(int i = 0; i < numberOfButtons; i++)
@@ -52,14 +64,58 @@ public class ActionButtonContainerScript : MonoBehaviour
             //Rotate the card away from the center
             var invertRotation = i < centerCardIndex;
             var rotation = Mathf.Lerp(0, _maxRotation * (invertRotation ? 1 : -1), relativeDistance);
-            Debug.Log("Card #" + i + "rotation: " + rotation + " distanceFromCenter: " + distanceFromCenter);
 
             newButton.GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, rotation);
+            _actionButtons.Add(newButton);
         }
     }
 
-    private void AppearAnimation()
+    public void AppearAnimation()
+    {
+        SetAttacks(PlayerManager.Instance.availableAttacks);
+        // var group = GetComponent<CanvasGroup>();
+        // group.alpha = 1;
+
+    }
+
+    public void DisappearAnimation()
+    {
+        Debug.Log("Beginning Disappear Animation");
+        //Set own alpha to 0
+        // var group = GetComponent<CanvasGroup>();
+        // group.alpha = 0;
+        //Destroy all actionbuttons
+        Debug.Log(_actionButtons.Count);
+        foreach (var button in _actionButtons)
+        {
+            Destroy(button);
+        }
+        _actionButtons.Clear();
+        
+    }
+
+    private void DisableButtons()
+    {
+        // //Go through all children and remove all onClick events from their buttons
+        foreach (var button in _actionButtons)
+        {
+            button.GetComponent<CombatButton>().RemoveButton();
+        }
+    }
+
+    public void SelectedSecondAttack()
+    {
+        StartCoroutine(BeginDisappear());
+    }
+    
+    public IEnumerator BeginDisappear()
     {
         
+        Debug.Log("BeginDisappear!");
+        DisableButtons();
+        yield return new WaitForSeconds(1);
+        DisappearAnimation();
+        CombatManager.Instance.CombatCycle();
+        // Code to execute after the delay
     }
 }

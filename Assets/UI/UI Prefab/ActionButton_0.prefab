@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 7549946719329787765}
   - component: {fileID: 8095297574564524978}
   - component: {fileID: 5018543331486874437}
+  - component: {fileID: 4114894075789443964}
   m_Layer: 5
   m_Name: ActionButton_0
   m_TagString: Untagged
@@ -335,9 +336,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7549946719329787765}
-        m_TargetAssemblyTypeName: ActionButton_Tween, Assembly-CSharp
-        m_MethodName: ButtonSelection
+      - m_Target: {fileID: 4114894075789443964}
+        m_TargetAssemblyTypeName: CombatButton, Assembly-CSharp
+        m_MethodName: ClickCard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -390,6 +391,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a3c669849ec94a4a86d8f26e01e9698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4114894075789443964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8845358708042257878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 345b8384802cbea43b74e9eafad41cb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionButtonTween: {fileID: 7549946719329787765}
+  _card: {fileID: 8095297574564524978}
 --- !u!1 &9193814711673752314
 GameObject:
   m_ObjectHideFlags: 0

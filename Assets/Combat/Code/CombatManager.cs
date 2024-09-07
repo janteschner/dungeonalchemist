@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using Combat;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CombatManager : MonoBehaviour
 {
     public static CombatManager Instance { get; private set; }
     private PlayerManager _player;
     private EnemyManager _enemy;
+    [SerializeField] private ActionButtonContainerScript _actionButtonContainerScript;
     [SerializeField] public Attack defaultAttack;
     [SerializeField] public EnemyType firstEnemy;
     [SerializeField] public int startingHp;
@@ -50,6 +52,7 @@ public class CombatManager : MonoBehaviour
         _enemy.PrepareForCombat(enemyType);
         isCombatOver = false;
         isPlayerTurn = true;
+        DisplayUIForPlayerTurn();
     }
 
     void Combat()
@@ -77,7 +80,17 @@ public class CombatManager : MonoBehaviour
             }
 
             isPlayerTurn = true;
+            DisplayUIForPlayerTurn();
         }
+    }
+
+    public void DisplayUIForPlayerTurn()
+    {
+        Debug.Log("Creating UI for player's turn!");    
+        //Create a new Card Selection UI from thje preset and add it to the ui canvas
+        // var newUi = Instantiate(_attackSelectionUiPrefab, _uiCanvas.transform, false);
+        // newUi.SetActive(true);
+        _actionButtonContainerScript.AppearAnimation();
     }
 
     public void CombatCycle()
@@ -104,7 +117,7 @@ public class CombatManager : MonoBehaviour
         // One big Attack
         if(firstAttack.element == Element.FIRE || firstAttack.element == Element.ICE || firstAttack.element == Element.VOLT)
         {
-            PlayerManager.Instance.Animator.SetTrigger("Move");
+            // PlayerManager.Instance.Animator.SetTrigger("Move");
         }
         // Two attacks
         else
@@ -115,6 +128,8 @@ public class CombatManager : MonoBehaviour
         _enemy.TakeDamage(firstAttackDamage);
         var secondAttackDamage = _enemy.CalculateDamage(secondAttack);
         _enemy.TakeDamage(secondAttackDamage);
+        
+        _player.ResetChosenAttacks();
     }
 
     public void EnemyTurn()

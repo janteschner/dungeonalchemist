@@ -39,65 +39,31 @@ public class PlayerManager : MonoBehaviour
         Debug.Log("Adding attack " + attack.attackName + " to player's available attacks!");
         availableAttacks.Append(attack);
     }
+    
 
-    public Attack ChooseFirstAttack()
+    public void ChoseAttackOne(Attack attack)
     {
-        if (availableAttacks.Length == 0)
-        {
-            return CombatManager.Instance.defaultAttack;
-        }
-        int r = Random.Range(0, availableAttacks.Length);
-        var chosenAttack = availableAttacks[r];
-        Debug.Log("Player chose attack " + chosenAttack.attackName + " with " + chosenAttack.baseDamage + " damage for first attack!");
-        return chosenAttack;
-    }
-
-    public void ChoseAttackOne()
-    {
-        if (availableAttacks.Length == 0)
-        {
-            this.FirstAttack = CombatManager.Instance.defaultAttack;
-        }
-        int r = Random.Range(0, availableAttacks.Length);
-        var chosenAttack = availableAttacks[r];
-        Debug.Log("Player chose attack " + chosenAttack.attackName + " with " + chosenAttack.baseDamage + " damage for first attack!");
-        this.FirstAttack = chosenAttack;
+        Debug.Log("Player chose attack " + attack.attackName + " with " + attack.baseDamage + " damage for first attack!");
+        this.FirstAttack = attack;
     }
     
-    public Attack ChooseSecondAttack(Attack firstAttack)
+    public void DeselectAttackOne()
     {
-        if (availableAttacks.Length == 0)
-        {
-            return CombatManager.Instance.defaultAttack;
-        }
+        Debug.Log("Player deselected first attack!");
+        this.FirstAttack = null;
+    }
+    
 
-        //Choose an attack from the array that is not firstAttack
-        Attack secondAttack = firstAttack;
-        while (secondAttack == firstAttack)
-        {
-            int r = Random.Range(0, availableAttacks.Length);
-            secondAttack = availableAttacks[r];
-        }
-        Debug.Log("Player chose attack " + secondAttack.attackName + " with " + secondAttack.baseDamage + " damage for second attack!");
-        return secondAttack;
+    public void ChoseAttackTwo(Attack attack)
+    {
+        Debug.Log("Player chose attack " + attack.attackName + " with " + attack.baseDamage + " damage for second attack!");
+        this.SecondAttack = attack;
     }
 
-    public void ChoseAttackTwo()
+    public void ResetChosenAttacks()
     {
-        if (availableAttacks.Length == 0)
-        {
-            this.SecondAttack = CombatManager.Instance.defaultAttack;
-        }
-
-        //Choose an attack from the array that is not firstAttack
-        Attack secondAttack = this.FirstAttack;
-        while (secondAttack == this.FirstAttack)
-        {
-            int r = Random.Range(0, availableAttacks.Length);
-            secondAttack = availableAttacks[r];
-        }
-        Debug.Log("Player chose attack " + secondAttack.attackName + " with " + secondAttack.baseDamage + " damage for second attack!");
-        this.SecondAttack = secondAttack;
+        this.FirstAttack = null;
+        this.SecondAttack = null;
     }
 
 
