@@ -208,6 +208,7 @@ public class LevelUpScript : MonoBehaviour
 
     public int GetLevelOfAttack(Attack attack)
     {
+        if (attack.isHealingPotion) return 0;
         //go though all trees and find the index of the attack of the tree it's in
         foreach (var tree in _upgradeTrees)
         {

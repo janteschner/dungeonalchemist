@@ -51,6 +51,7 @@ public class CardScript : MonoBehaviour
         description.text = healingAttack.attackDescription;
         _attack = healingAttack;
         title.color = ElementFunctions.GetElementColor(healingAttack.element);
+        UpdateFrame(healingAttack);
         SetIcon(healingAttack.element);
     }
 
