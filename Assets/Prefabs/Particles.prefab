@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7291885885052145505
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8813368803714237423}
+  - component: {fileID: 4170965869637247942}
+  m_Layer: 0
+  m_Name: Particles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8813368803714237423
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7291885885052145505}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4170965869637247942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7291885885052145505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c456cca54c51adc429446ffc7f7ac16b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Particles:
+  - {fileID: 4261434504989908462, guid: f797dbab7aebda343babdd91e2e18b57, type: 3}
+  - {fileID: 1957449492195719678, guid: 1cca3987fd3a4ba4b87e0b5ee7ca6f73, type: 3}
+  - {fileID: 4405880915505593872, guid: 08ef02c40ff17ba4f82850e01cb048c2, type: 3}
+  - {fileID: 3749243917808493889, guid: f42349e8b60062c45867f852ca2079f7, type: 3}
+  - {fileID: 2767842347642629773, guid: b92347842b9b5d64d9e62a1d636fca0e, type: 3}
+  - {fileID: 7008103753935988769, guid: 10e63993ab3269748a7ebae159c8f3f3, type: 3}
+  - {fileID: 1563351905657115673, guid: 581af24468b5bdc4c905d38d83ceea30, type: 3}
+  - {fileID: 1753746413977672105, guid: 24afc30ab82aba449b7bd84548636f81, type: 3}
+  - {fileID: 1246454682477953672, guid: ec83400de3c3478418d7eb3362f814b6, type: 3}
