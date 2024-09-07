@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 865d72d558629364caf355e77fa4117c, type: 3}
   m_Name: EnemyInfoButton
   m_EditorClassIdentifier: 
-  tweenDuration: 1
+  tweenDuration: 0.3
   tweenSnapping: 0
-  easeType: 4
+  easeType: 10
   tweenDelaySeconds: 0
   loopAmount: 0
   loopType: 0

@@ -1,10 +1,7 @@
-using System;
 using Combat;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UIElements;
-using Button = UnityEngine.UI.Button;
 
 public class CardScript : MonoBehaviour
 {
@@ -15,14 +12,17 @@ public class CardScript : MonoBehaviour
     
     public TMP_Text description;
 
-    public Attack attack;
+    private Attack _attack;
 
-
+    public Attack attack
+    {
+        get => _attack;
+    }
 
     public void SetCard( Attack newAttack)
     {
         title.text = newAttack.attackName;
         description.text = newAttack.attackDescription;
-        attack = newAttack;
+        _attack = newAttack;
     }
 }

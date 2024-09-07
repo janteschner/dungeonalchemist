@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 2
   attackName: Ice
-  attackDescription: Deals 2 Ice Damage
+  _attackDescription: Deals #damage #element Damage
   element: 2
   upgradesTo: {fileID: 0}
