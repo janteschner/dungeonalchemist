@@ -7,6 +7,7 @@ public class CardScript : MonoBehaviour
 {
 
     [SerializeField] public Image elementImage;
+    [SerializeField] public Image frame;
 
     public TMP_Text title;
     
@@ -52,5 +53,6 @@ public class CardScript : MonoBehaviour
     private void SetIcon(Element element)
     {
         elementImage.sprite = UIMappings.Instance.getIconForElement(element);
+        frame.color = ElementFunctions.GetElementColor(element);
     }
 }

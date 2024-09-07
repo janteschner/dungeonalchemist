@@ -92,7 +92,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 23.7
+  m_fontSize: 25.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.23137254, g: 0.8980392, b: 0.3502118, a: 1}
+  m_Color: {r: 0.7688679, g: 0.35542008, b: 0.35542008, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -454,6 +454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elementImage: {fileID: 2373259203133604778}
+  frame: {fileID: 7753928563119917437}
   title: {fileID: 5992726372720127050}
   description: {fileID: 5666019364685314038}
 --- !u!114 &5018543331486874437
