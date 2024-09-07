@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33e2e1951f314938b9ef8a539d544063, type: 3}
-  m_Name: FireWizardFireball
+  m_Name: VoltWizardShockingGrasp
   m_EditorClassIdentifier: 
-  baseDamage: 5
-  attackName: Fireball
-  _attackDescription: A ball of flame dealing serious damage
-  element: 1
+  baseDamage: 3
+  attackName: Shocking Grasp
+  _attackDescription: The Stormcaller charges their hands with eelctricity and delivers
+    a shocking grasp
+  element: 3
   isHealingPotion: 0

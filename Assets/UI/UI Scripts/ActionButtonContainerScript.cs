@@ -54,7 +54,6 @@ public class ActionButtonContainerScript : MonoBehaviour
         
         float centerCardIndex = ((float)numberOfButtons - 1) / 2;
         
-
         
         for(int i = 0; i < numberOfButtons; i++)
         {

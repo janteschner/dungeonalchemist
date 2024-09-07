@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33e2e1951f314938b9ef8a539d544063, type: 3}
-  m_Name: FireWizardFireball
+  m_Name: VoltWizardElectroball
   m_EditorClassIdentifier: 
-  baseDamage: 5
-  attackName: Fireball
-  _attackDescription: A ball of flame dealing serious damage
-  element: 1
+  baseDamage: 4
+  attackName: Electroball
+  _attackDescription: A ball of pure energy
+  element: 3
   isHealingPotion: 0

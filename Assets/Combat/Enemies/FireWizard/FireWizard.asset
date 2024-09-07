@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f68c46d7ea41eebe17ad6102607f14, type: 3}
   m_Name: FireWizard
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 16
   enemyName: Pyromancer
-  descriptionBasic: A robed enigma carrying the element of flame
-  descriptionDetailed: Damn it's hot in here!
+  descriptionBasic: A sorcerer who burns enemies with powerful fire magic
+  descriptionDetailed: They are hot-tempered and impulsive, often setting their surroundings
+    ablaze without a second thought
   immunities: 01000000
   resistances: 04000000
   weaknesses: 02000000
