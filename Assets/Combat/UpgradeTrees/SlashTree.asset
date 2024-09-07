@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58c6db4204e859546bf97c463c66e2e7, type: 3}
+  m_Name: SlashTree
+  m_EditorClassIdentifier: 
+  element: 4
+  attacks:
+  - {fileID: 11400000, guid: 993bdb86961306a49a5a3bc5323744cf, type: 2}
+  - {fileID: 11400000, guid: 32e2dfb3bb3f49e40997b2d5625a05a8, type: 2}
+  - {fileID: 11400000, guid: 9a7014e887b5963498f9fb0c1494971f, type: 2}

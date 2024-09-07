@@ -46,14 +46,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   container: {fileID: 3949844542533551754}
-  cardTemplate: {fileID: 0}
   card1: {fileID: 8183127345800385092}
   card2: {fileID: 3543844442759779911}
   card3: {fileID: 8510631576103839054}
-  attacksToShow:
-  - {fileID: 11400000, guid: 9a7014e887b5963498f9fb0c1494971f, type: 2}
-  - {fileID: 11400000, guid: 22d4412b59f4e2b4f9885b0fdcc7d448, type: 2}
-  - {fileID: 11400000, guid: 45edebd2412a2d246a4d6287d1e5be34, type: 2}
+  attacksToShow: []
+  _upgradeTrees:
+  - {fileID: 11400000, guid: b6ad71d0182793049896be6538092a06, type: 2}
+  - {fileID: 11400000, guid: 9927b646fc018cd48908bc39c277ac35, type: 2}
+  - {fileID: 11400000, guid: c4e1b5065003087448515e1f228af631, type: 2}
+  - {fileID: 11400000, guid: 5f60fdb1ca77e4d42ac5ce945e51521f, type: 2}
+  - {fileID: 11400000, guid: fa4cf402637120841b0c2276542b5c02, type: 2}
+  - {fileID: 11400000, guid: c49051cbc2aa82d459c10109da580b98, type: 2}
+  healingPotion: {fileID: 11400000, guid: 5b4597fa5fe89c54dbc859ea50ce44d9, type: 2}
 --- !u!1 &3886039284681664974
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +187,7 @@ RectTransform:
   m_GameObject: {fileID: 8190451542989655401}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4323097917312601503}
@@ -242,6 +246,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3949844542533551754}
     m_Modifications:
+    - target: {fileID: 3151486840096106042, guid: b407f0bc612dd1045aebe211660fd717, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151486840096106042, guid: b407f0bc612dd1045aebe211660fd717, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3984431876940189928}
+    - target: {fileID: 3151486840096106042, guid: b407f0bc612dd1045aebe211660fd717, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClickOnCard
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151486840096106042, guid: b407f0bc612dd1045aebe211660fd717, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ChestScript, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 4194735891013332073, guid: b407f0bc612dd1045aebe211660fd717, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -304,7 +324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4194735891013332073, guid: b407f0bc612dd1045aebe211660fd717, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -400
+      value: -350
       objectReference: {fileID: 0}
     - target: {fileID: 4194735891013332073, guid: b407f0bc612dd1045aebe211660fd717, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -330,7 +350,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: ActionButton_0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4114894075789443964, guid: b407f0bc612dd1045aebe211660fd717, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -359,6 +380,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3949844542533551754}
     m_Modifications:
+    - target: {fileID: 3151486840096106042, guid: b407f0bc612dd1045aebe211660fd717, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151486840096106042, guid: b407f0bc612dd1045aebe211660fd717, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3984431876940189928}
+    - target: {fileID: 3151486840096106042, guid: b407f0bc612dd1045aebe211660fd717, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClickOnCard
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151486840096106042, guid: b407f0bc612dd1045aebe211660fd717, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ChestScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151486840096106042, guid: b407f0bc612dd1045aebe211660fd717, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4194735891013332073, guid: b407f0bc612dd1045aebe211660fd717, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -421,7 +462,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4194735891013332073, guid: b407f0bc612dd1045aebe211660fd717, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 400
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 4194735891013332073, guid: b407f0bc612dd1045aebe211660fd717, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -447,7 +488,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: ActionButton_0 (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4114894075789443964, guid: b407f0bc612dd1045aebe211660fd717, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -476,6 +518,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3949844542533551754}
     m_Modifications:
+    - target: {fileID: 3151486840096106042, guid: b407f0bc612dd1045aebe211660fd717, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151486840096106042, guid: b407f0bc612dd1045aebe211660fd717, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3984431876940189928}
+    - target: {fileID: 3151486840096106042, guid: b407f0bc612dd1045aebe211660fd717, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClickOnCard
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151486840096106042, guid: b407f0bc612dd1045aebe211660fd717, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ChestScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151486840096106042, guid: b407f0bc612dd1045aebe211660fd717, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4194735891013332073, guid: b407f0bc612dd1045aebe211660fd717, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -564,7 +626,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: ActionButton_0 (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4114894075789443964, guid: b407f0bc612dd1045aebe211660fd717, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

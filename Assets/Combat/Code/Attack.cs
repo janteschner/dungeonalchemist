@@ -10,7 +10,7 @@ namespace Combat
         [SerializeField] public string attackName;
         [SerializeField] [CanBeNull] private string _attackDescription;
         [SerializeField] public Element element;
-        [SerializeField] [CanBeNull] public Attack upgradesTo;
+        [SerializeField] public bool isHealingPotion;
         
         public string attackDescription
         {
@@ -22,5 +22,13 @@ namespace Combat
             }
             set => _attackDescription = value;
         }
+
+        public string GetAttackUpgradeDescription(Attack upgradeFrom)
+        {
+            var damageString = upgradeFrom.baseDamage + " -> " + baseDamage;
+            return _attackDescription.Replace("#damage", damageString)
+                .Replace("#element", element.ToString());
+        }
+        
     }
 }

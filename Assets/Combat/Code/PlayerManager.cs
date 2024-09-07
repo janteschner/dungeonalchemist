@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance { get; private set; }
 
-    public Attack[] availableAttacks;
+    public List<Attack> availableAttacks = new List<Attack>();
     public Attack FirstAttack;
     public Attack SecondAttack;
 
@@ -31,13 +31,29 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         Animator = GetComponent<Animator>();
+        var randomAttacks = LevelUpScript.Instance.GetStartingAttacks();
+        foreach (var attack in randomAttacks)
+        {
+            AddAttack(attack);
+        }
     }
 
 
     public void AddAttack(Attack attack)
     {
         Debug.Log("Adding attack " + attack.attackName + " to player's available attacks!");
-        availableAttacks.Append(attack);
+        availableAttacks.Add(attack);
+    }
+
+    public void UpgradeAttack(Attack newAttack)
+    {
+        //set previousAttack to the existing attack with the same element
+        var previousAttack = availableAttacks.FirstOrDefault(a => a.element == newAttack.element);
+        
+        //replace the previous attack with the new one, keeping it at the same index
+        var index = availableAttacks.IndexOf(previousAttack);
+        availableAttacks[index] = newAttack;
+        Debug.Log("Upgraded attack " + previousAttack.attackName + " to " + newAttack.attackName + "!");
     }
     
 
@@ -82,6 +98,12 @@ public class PlayerManager : MonoBehaviour
     {
         Debug.Log("Player took " + damage + " damage!");
         hp -= damage;
+    }
+    
+    public void Heal(int healing)
+    {
+        Debug.Log("Player healed " + healing + " damage!");
+        hp += healing;
     }
 
     public bool IsDead()

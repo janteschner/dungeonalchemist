@@ -72,7 +72,7 @@ public class ActionButtonContainerScript : MonoBehaviour
 
     public void AppearAnimation()
     {
-        SetAttacks(PlayerManager.Instance.availableAttacks);
+        SetAttacks(PlayerManager.Instance.availableAttacks.ToArray());
         // var group = GetComponent<CanvasGroup>();
         // group.alpha = 1;
 
