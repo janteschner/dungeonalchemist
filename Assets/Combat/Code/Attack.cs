@@ -25,7 +25,7 @@ namespace Combat
 
         public string GetAttackUpgradeDescription(Attack upgradeFrom)
         {
-            var damageString = upgradeFrom.baseDamage + " -> " + baseDamage;
+            var damageString = "<b>"+upgradeFrom.baseDamage + "→" + baseDamage+"</b>";
             return _attackDescription.Replace("#damage", damageString)
                 .Replace("#element", element.ToString());
         }

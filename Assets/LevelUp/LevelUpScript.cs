@@ -205,6 +205,21 @@ public class LevelUpScript : MonoBehaviour
 
         container.gameObject.SetActive(true);
     }
+
+    public int GetLevelOfAttack(Attack attack)
+    {
+        //go though all trees and find the index of the attack of the tree it's in
+        foreach (var tree in _upgradeTrees)
+        {
+            var index = tree.attacks.ToList().IndexOf(attack);
+            if (index != -1)
+            {
+                return index;
+            }
+        }
+
+        return -1;
+    }
     
     public void ClickOnCard(int index)
     {
