@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerAnimationController : MonoBehaviour
 {
+    [SerializeField] GameObject shootOrigin;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,13 +44,13 @@ public class PlayerAnimationController : MonoBehaviour
             case Element.UNTYPED:
                 break;
             case Element.FIRE:
-                ObjectPool.Instance.PlayFightFX(transform, Effects.FIREBALL);
+                ObjectPool.Instance.PlayFightFX(shootOrigin.transform, Effects.FIREBALL);
                 break;
             case Element.ICE:
-                ObjectPool.Instance.PlayFightFX(transform, Effects.ICEBALL);
+                ObjectPool.Instance.PlayFightFX(shootOrigin.transform, Effects.ICEBALL);
                 break;
             case Element.VOLT:
-                ObjectPool.Instance.PlayFightFX(transform, Effects.VOLTBALL);
+                ObjectPool.Instance.PlayFightFX(shootOrigin.transform, Effects.VOLTBALL);
                 break;
 
         }
