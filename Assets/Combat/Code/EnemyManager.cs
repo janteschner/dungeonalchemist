@@ -79,6 +79,7 @@ public class EnemyManager : MonoBehaviour
         {
             Debug.Log("Enemy is neutral to " + attack.element + " damage");
         }
+
         return damage;
     }
     

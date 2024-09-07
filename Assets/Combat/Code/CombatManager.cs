@@ -117,16 +117,33 @@ public class CombatManager : MonoBehaviour
         Debug.Log("Player's turn! (Player is at " + _player.hp + " HP)");
         var firstAttack = _player.FirstAttack;
         var secondAttack = _player.SecondAttack;
-        
-        // One big Attack
-        if(firstAttack.element == Element.FIRE || firstAttack.element == Element.ICE || firstAttack.element == Element.VOLT)
-        {
-            // PlayerManager.Instance.Animator.SetTrigger("Move");
-        }
-        // Two attacks
-        else
-        {
 
+        switch (firstAttack.element)
+        {
+            case Element.UNTYPED:
+                break;
+            case Element.FIRE:
+                ObjectPool.Instance.PlayFightFX(EnemyManager.Instance.transform, Effects.FIRE);
+                break;
+            case Element.ICE:
+                ObjectPool.Instance.PlayFightFX(EnemyManager.Instance.transform, Effects.ICE);
+                break;
+            case Element.VOLT:
+                ObjectPool.Instance.PlayFightFX(EnemyManager.Instance.transform, Effects.VOLT);
+                break;
+            case Element.SLASH:
+                if(secondAttack.element == Element.FIRE)
+                    ObjectPool.Instance.PlayFightFX(EnemyManager.Instance.transform, Effects.FIRESTORM);
+                break;
+            case Element.STAB:
+                break;
+            case Element.BASH:
+                if(secondAttack.element == Element.ICE){    }
+                else
+                {
+                    ObjectPool.Instance.PlayFightFX(EnemyManager.Instance.transform, Effects.BASH);
+                }
+                break;
         }
 
         var firstAttackDamage = _enemy.CalculateDamage(firstAttack);
