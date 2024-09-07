@@ -17,7 +17,7 @@ public class ElementFunctions : MonoBehaviour
             case Element.SLASH:
                 return "Slash";
             case Element.STAB:
-                return "Stab";
+                return "Pierce";
             case Element.BASH:
                 return "Bash";
             default:
