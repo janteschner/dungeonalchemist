@@ -136,4 +136,26 @@ public class PlayerManager : MonoBehaviour
         // Reset Combat
         //CombatManager.Instance.BeginCombat();
     }
+
+    public void OnAnimationShooting()
+    {
+        switch (FirstAttack.element)
+        {
+            case Element.UNTYPED:
+                break;
+            case Element.FIRE:
+                ObjectPool.Instance.PlayFightFX(transform, Effects.FIREBALL);
+                break;
+            case Element.ICE:
+                ObjectPool.Instance.PlayFightFX(transform, Effects.ICEBALL);
+                break;
+            case Element.VOLT:
+                ObjectPool.Instance.PlayFightFX(transform, Effects.VOLTBALL);
+                break;
+            
+        }
+
+        BulletProjectile.OnProjectileHit += CombatManager.Instance.PlayerTurn;
+
+    }
 }

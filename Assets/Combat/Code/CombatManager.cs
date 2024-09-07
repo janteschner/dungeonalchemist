@@ -70,12 +70,23 @@ public class CombatManager : MonoBehaviour
     {
         if (_player.IsDead() || _enemy.IsDead()) return;
         Debug.Log("Combat cycle beginning!");
+        var firstAttack = _player.FirstAttack;
+        var secondAttack = _player.SecondAttack;
+
         if (isPlayerTurn)
         {
             //PlayerTurn();
-            PlayerManager.Instance.Animator.SetTrigger("Move");
-            
 
+
+            // Elementar Attack first
+            if ((int)firstAttack.element <= 3)
+            {
+                PlayerManager.Instance.Animator.SetTrigger("Shoot");
+            }
+            else if ((int)firstAttack.element >= 3 && (int)firstAttack.element <= 6)
+            {
+                PlayerManager.Instance.Animator.SetTrigger("Move");
+            }
             isPlayerTurn = false;
 
         }
@@ -113,6 +124,7 @@ public class CombatManager : MonoBehaviour
         Combat();
         
     }
+
 
     public void PlayerTurn()
     {
