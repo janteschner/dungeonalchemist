@@ -75,6 +75,7 @@ public class CombatManager : MonoBehaviour
         Debug.Log("Combat cycle beginning!");
         var firstAttack = _player.FirstAttack;
         var secondAttack = _player.SecondAttack;
+        var enemyAttack = _enemy.ChooseAttack();
 
         if (isPlayerTurn)
         {
@@ -96,9 +97,15 @@ public class CombatManager : MonoBehaviour
         else
         {
             //EnemyTurn();
-            EnemyManager.Instance.Animator.SetTrigger("Move");
-            
-            
+            if ((int)enemyAttack.element <= 3)
+            {
+                EnemyManager.Instance.Animator.SetTrigger("Shoot");
+            }
+            else if ((int)enemyAttack.element >= 3 && (int)firstAttack.element <= 6)
+            {
+                EnemyManager.Instance.Animator.SetTrigger("Move");
+            }
+
             isPlayerTurn = true;
 
         }
@@ -174,7 +181,7 @@ public class CombatManager : MonoBehaviour
     public void EnemyTurn()
     {
         Debug.Log("Enemy's turn! (Enemy is at " + _enemy.Hp + " HP)");
-        var attack = _enemy.ChooseAttack();
+        var attack = _enemy.CurrentAttack;
         var damage = _player.CalculateDamage(attack);
         NotebookScript.Instance.AddAttack(_enemy.CurrentEnemyType, attack);
         _player.TakeDamage(damage);
