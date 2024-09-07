@@ -690,6 +690,10 @@ PrefabInstance:
       propertyPath: actionCardsTransform
       value: 
       objectReference: {fileID: 2065888049}
+    - target: {fileID: 1359033076435549969, guid: 3f15bea5bbfbce04689a5c8a83a1c5c6, type: 3}
+      propertyPath: completelyHiddenYOffset
+      value: -700
+      objectReference: {fileID: 0}
     - target: {fileID: 2719227312505366288, guid: 3f15bea5bbfbce04689a5c8a83a1c5c6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -752,11 +756,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2719227312505366288, guid: 3f15bea5bbfbce04689a5c8a83a1c5c6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 524
+      value: 639
       objectReference: {fileID: 0}
     - target: {fileID: 2719227312505366288, guid: 3f15bea5bbfbce04689a5c8a83a1c5c6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -742
+      value: -800
       objectReference: {fileID: 0}
     - target: {fileID: 2719227312505366288, guid: 3f15bea5bbfbce04689a5c8a83a1c5c6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -797,10 +801,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1528741622779140287}
     m_Modifications:
-    - target: {fileID: 3555630503721786468, guid: 5ba7d8e0a7859a34faeb0e6507de4223, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -890573757, guid: a386660d79f5b6941bbd5fab5a545ba0, type: 3}
     - target: {fileID: 5219909961069960176, guid: 87910802b223a044c99d1b5e4a0d4b7d, type: 3}
       propertyPath: m_Name
       value: CombatCardsPrefab
@@ -871,11 +871,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8941191306402580735, guid: 87910802b223a044c99d1b5e4a0d4b7d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -272.44608
+      value: -436
       objectReference: {fileID: 0}
     - target: {fileID: 8941191306402580735, guid: 87910802b223a044c99d1b5e4a0d4b7d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -314.14365
+      value: -357
       objectReference: {fileID: 0}
     - target: {fileID: 8941191306402580735, guid: 87910802b223a044c99d1b5e4a0d4b7d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -889,6 +889,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3555630503721786468, guid: 5ba7d8e0a7859a34faeb0e6507de4223, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -890573757, guid: a386660d79f5b6941bbd5fab5a545ba0, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
