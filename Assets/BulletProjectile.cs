@@ -15,18 +15,18 @@ public class BulletProjectile : MonoBehaviour
 
     public void OnPlayerShootBullet()
     {
-        PlayerManager.Instance.OnAnimationAttack();
+        PlayerManager.Instance.Controller.OnAnimationAttack();
     }
 
     public void OnPlayerShootingEnd()
     {
-        PlayerManager.Instance.OnAnimationFinished();
+        PlayerManager.Instance.Controller.OnAnimationFinished();
         Destroy(gameObject);
     }
 
     public void OnEnemyShootBullet()
     {
-        EnemyManager.Instance.OnAnimationAttack();
+        EnemyManager.Instance.Controller.OnAnimationAttack();
         Destroy(gameObject);
 
     }
