@@ -13,6 +13,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private ActionButtonContainerScript _actionButtonContainerScript;
     [SerializeField] public Attack defaultAttack;
     [SerializeField] public EnemyType firstEnemy;
+    [SerializeField] public FXSpawner fxSpawner;
     [SerializeField] public int startingHp;
 
     public bool isPlayerTurn;
@@ -21,7 +22,7 @@ public class CombatManager : MonoBehaviour
     
     private void Awake()
     {
-        if (Instance != null && Instance != this) 
+        if (Instance != null && Instance != this)
         { 
             Destroy(this); 
         } 
@@ -123,17 +124,17 @@ public class CombatManager : MonoBehaviour
             case Element.UNTYPED:
                 break;
             case Element.FIRE:
-                ObjectPool.Instance.PlayFightFX(EnemyManager.Instance.transform, Effects.FIRE);
+                fxSpawner.PlayFightFX(Effects.FIRE);
                 break;
             case Element.ICE:
-                ObjectPool.Instance.PlayFightFX(EnemyManager.Instance.transform, Effects.ICE);
+                fxSpawner.PlayFightFX(Effects.ICE);
                 break;
             case Element.VOLT:
-                ObjectPool.Instance.PlayFightFX(EnemyManager.Instance.transform, Effects.VOLT);
+                fxSpawner.PlayFightFX(Effects.VOLT);
                 break;
             case Element.SLASH:
                 if(secondAttack.element == Element.FIRE)
-                    ObjectPool.Instance.PlayFightFX(EnemyManager.Instance.transform, Effects.FIRESTORM);
+                    fxSpawner.PlayFightFX(Effects.FIRESTORM);
                 break;
             case Element.STAB:
                 break;
@@ -141,7 +142,7 @@ public class CombatManager : MonoBehaviour
                 if(secondAttack.element == Element.ICE){    }
                 else
                 {
-                    ObjectPool.Instance.PlayFightFX(EnemyManager.Instance.transform, Effects.BASH);
+                    fxSpawner.PlayFightFX(Effects.BASH);
                 }
                 break;
         }
