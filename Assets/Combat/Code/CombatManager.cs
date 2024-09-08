@@ -283,6 +283,7 @@ public class CombatManager : MonoBehaviour
             ComboTurn();
             return;
         }
+
         SetAttackByElement(PlayerManager.Instance.FirstAttack.element);
         Debug.Log("First Player turn and the selected attacks are " + _player.FirstAttack.attackName + " and " + _player.SecondAttack.attackName);
         isPlayerTurn = true;
@@ -295,13 +296,13 @@ public class CombatManager : MonoBehaviour
         Debug.Log("Second Player turn and the selected attacks are " + _player.FirstAttack.attackName + " and " + _player.SecondAttack.attackName);
         isPlayerTurn = false;
 
-        SetAttackByElement(PlayerManager.Instance.FirstAttack.element);
+        SetAttackByElement(PlayerManager.Instance.SecondAttack.element);
     }
 
     public void SetAttackByElement(Element _element)
     {
         // Elemental Attacks are Shoot
-        if (ElementFunctions.IsMagicalElement(PlayerManager.Instance.FirstAttack.element))
+        if (ElementFunctions.IsMagicalElement(_element))
         {
             PlayerManager.Instance.Animator.SetTrigger("Shoot");
         }
