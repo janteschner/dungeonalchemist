@@ -270,7 +270,7 @@ public class CombatManager : MonoBehaviour
         isPlayerTurn = true;
 
         // Elemental Attacks are Shoot
-        if (false)
+        if (ElementFunctions.IsMagicalElement(PlayerManager.Instance.FirstAttack.element))
         {
             PlayerManager.Instance.Animator.SetTrigger("Shoot");
         }
@@ -285,11 +285,11 @@ public class CombatManager : MonoBehaviour
         Debug.Log("Combo being used! The combo is " + _player.CurrentCombo);
         isPlayerTurn = false;
 
-        // // Elemental Attacks are Shoot
-        // if (ElementFunctions.IsMagicalElement(_player.FirstAttack.element))
-        // {
-        //     PlayerManager.Instance.Animator.SetTrigger("Shoot");
-        // }
+        //// Elemental Attacks are Shoot
+        //if (ElementFunctions.IsMagicalElement(_player.FirstAttack.element))
+        //{
+        //    PlayerManager.Instance.Animator.SetTrigger("Shoot");
+        //}
         PlayerManager.Instance.Animator.SetTrigger("Move");
         
     }
@@ -300,7 +300,7 @@ public class CombatManager : MonoBehaviour
         isPlayerTurn = false;
 
         // Elemental attacks are Shoot
-        if (false)
+        if (ElementFunctions.IsMagicalElement(PlayerManager.Instance.SecondAttack.element))
         {
             PlayerManager.Instance.Animator.SetTrigger("Shoot");
         }

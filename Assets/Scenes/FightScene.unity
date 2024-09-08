@@ -484,6 +484,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1528741622779140287}
     m_Modifications:
+    - target: {fileID: 3555630503721786468, guid: 5ba7d8e0a7859a34faeb0e6507de4223, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -890573757, guid: a386660d79f5b6941bbd5fab5a545ba0, type: 3}
     - target: {fileID: 5219909961069960176, guid: 87910802b223a044c99d1b5e4a0d4b7d, type: 3}
       propertyPath: m_Name
       value: CombatCardsPrefab
@@ -572,10 +576,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3555630503721786468, guid: 5ba7d8e0a7859a34faeb0e6507de4223, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -890573757, guid: a386660d79f5b6941bbd5fab5a545ba0, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -668,67 +668,6 @@ MonoBehaviour:
   skeleton: {fileID: 11400000, guid: 31161c7c211bf334e848e7d15d1de928, type: 2}
   wizard: {fileID: 11400000, guid: 52c5099d6ce24d84395ccf06baa03a18, type: 2}
   dragon: {fileID: 11400000, guid: 43126a9c18c64bd4698341e3d98b4c2b, type: 2}
---- !u!1001 &2039729155
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2287611229978987558, guid: 599616a9c6a271040a3e08861cc0096f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4.62
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287611229978987558, guid: 599616a9c6a271040a3e08861cc0096f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287611229978987558, guid: 599616a9c6a271040a3e08861cc0096f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287611229978987558, guid: 599616a9c6a271040a3e08861cc0096f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287611229978987558, guid: 599616a9c6a271040a3e08861cc0096f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287611229978987558, guid: 599616a9c6a271040a3e08861cc0096f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287611229978987558, guid: 599616a9c6a271040a3e08861cc0096f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287611229978987558, guid: 599616a9c6a271040a3e08861cc0096f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287611229978987558, guid: 599616a9c6a271040a3e08861cc0096f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287611229978987558, guid: 599616a9c6a271040a3e08861cc0096f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4424445705053567557, guid: 599616a9c6a271040a3e08861cc0096f, type: 3}
-      propertyPath: m_Name
-      value: Enemy-Wizzard
-      objectReference: {fileID: 0}
-    - target: {fileID: 4424445705053567557, guid: 599616a9c6a271040a3e08861cc0096f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 599616a9c6a271040a3e08861cc0096f, type: 3}
 --- !u!1001 &2052413066
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1304,4 +1243,3 @@ SceneRoots:
   - {fileID: 8388287743270549095}
   - {fileID: 1967760509}
   - {fileID: 1972399990592536579}
-  - {fileID: 2039729155}
