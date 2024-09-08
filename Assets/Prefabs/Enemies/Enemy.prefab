@@ -223,13 +223,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5140101030464530274}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2378438043323667988}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!212 &3555630503721786468
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -292,7 +292,7 @@ Animator:
   m_GameObject: {fileID: 5140101030464530274}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 558b5cf340dee744280d0751a89389cd, type: 2}
+  m_Controller: {fileID: 9100000, guid: 55b100361bf8cdf48b1d6c0e1a157877, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -315,6 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baa0db2aeb36cb741a45f160d84a5f99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootOrigin: {fileID: 0}
 --- !u!1001 &1946494847745869468
 PrefabInstance:
   m_ObjectHideFlags: 0

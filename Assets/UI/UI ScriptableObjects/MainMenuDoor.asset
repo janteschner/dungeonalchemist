@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 865d72d558629364caf355e77fa4117c, type: 3}
   m_Name: MainMenuDoor
   m_EditorClassIdentifier: 
-  tweenDuration: 2
+  tweenDuration: 1
   tweenSnapping: 0
-  easeType: 3
+  easeType: 2
   tweenDelaySeconds: 0
   loopAmount: 0
   loopType: 0
