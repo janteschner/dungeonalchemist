@@ -24,3 +24,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3d6f7baa709f5b149af50c7f29e204bc, type: 2}
   - {fileID: 11400000, guid: ba722a023687ff549925c17972cde798, type: 2}
   healthbarSprite: {fileID: 21300000, guid: e3c3eb109668df6498da0546fcec5864, type: 3}
+  prefab: {fileID: 4424445705053567557, guid: 599616a9c6a271040a3e08861cc0096f, type: 3}

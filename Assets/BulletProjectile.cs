@@ -5,11 +5,16 @@ using UnityEngine;
 
 public class BulletProjectile : MonoBehaviour
 {
-    public static event Action OnProjectileHit;
+    public event Action OnProjectileHit;
 
     public void OnProjectileFinished()
     {
         OnProjectileHit?.Invoke();
+    }
+
+    public void OnAnimationFinished()
+    {
+        CombatManager.Instance.Combat();
         Destroy(gameObject);
     }
 

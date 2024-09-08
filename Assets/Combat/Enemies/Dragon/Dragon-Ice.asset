@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f68c46d7ea41eebe17ad6102607f14, type: 3}
+  m_Name: Dragon-Ice
+  m_EditorClassIdentifier: 
+  maxHealth: 1000
+  enemyName: 
+  descriptionBasic: 
+  descriptionDetailed: 
+  immunities: 010000000200000003000000
+  resistances: 0400000006000000
+  weaknesses: 05000000
+  availableAttacks: []
+  healthbarSprite: {fileID: 21300000, guid: 6f5ef6847db5d91428eb88cc7abb7048, type: 3}
+  prefab: {fileID: 6356324149684810542, guid: 4bcc4f51877dc784da329ca4b6610bab, type: 3}

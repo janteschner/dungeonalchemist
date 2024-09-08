@@ -7,7 +7,7 @@ public class ObjectPool : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] List<GameObject> Particles;
 
-    public static ObjectPool Instance = new ObjectPool();
+    public static ObjectPool Instance { get; private set; }
 
     private void Awake()
     {
@@ -31,7 +31,7 @@ public class ObjectPool : MonoBehaviour
         
     }
 
-    public void PlayFightFX(Transform _transform, Effects _element)
+    public GameObject PlayFightFX(Transform _transform, Effects _element)
     {
         List<ParticleSystem> particles = new List<ParticleSystem>();
         GameObject particle = null;
@@ -79,5 +79,7 @@ public class ObjectPool : MonoBehaviour
         {
             particleSystem.Play();
         }
+
+        return particle;
     }
 }

@@ -38,24 +38,30 @@ public class PlayerAnimationController : MonoBehaviour
 
     public void OnAnimationShooting()
     {
-
+        GameObject FXObject = null;
         switch (PlayerManager.Instance.FirstAttack.element)
         {
             case Element.UNTYPED:
                 break;
             case Element.FIRE:
-                ObjectPool.Instance.PlayFightFX(shootOrigin.transform, Effects.FIREBALL);
+                FXObject = ObjectPool.Instance.PlayFightFX(shootOrigin.transform, Effects.FIREBALL);
                 break;
             case Element.ICE:
-                ObjectPool.Instance.PlayFightFX(shootOrigin.transform, Effects.ICEBALL);
+                FXObject = ObjectPool.Instance.PlayFightFX(shootOrigin.transform, Effects.ICEBALL);
                 break;
             case Element.VOLT:
-                ObjectPool.Instance.PlayFightFX(shootOrigin.transform, Effects.VOLTBALL);
+                FXObject = ObjectPool.Instance.PlayFightFX(shootOrigin.transform, Effects.VOLTBALL);
                 break;
 
         }
 
-        BulletProjectile.OnProjectileHit += CombatManager.Instance.OnPlayerHitConnect;
+        BulletProjectile projectile = FXObject.GetComponent<BulletProjectile>();
+        projectile.OnProjectileHit += CombatManager.Instance.OnPlayerHitConnect;
+        projectile.OnProjectileHit += OnPlayerHitConnect;
+    }
 
+    public void OnPlayerHitConnect()
+    {
+        Debug.LogWarning("Player Bullet hast Hit Enemy");
     }
 }
