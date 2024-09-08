@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Combat;
+using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -17,21 +18,22 @@ public class CombatManager : MonoBehaviour
     [SerializeField] public int startingHp;
 
     public bool isPlayerTurn;
+    public bool isSecondPlayerAttack;
     public bool isEnemyTurn;
     public bool isCombatOver;
-    
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
-        { 
-            Destroy(this); 
-        } 
-        else 
-        { 
-            Instance = this; 
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
         }
     }
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,10 +64,11 @@ public class CombatManager : MonoBehaviour
         PlayerManager.Instance.Animator.SetTrigger("Reset");
         EnemyManager.Instance.Animator.SetTrigger("Reset");
 
-        
+
         NotebookShowHide.Instance.ShowFromCompletelyHidden();
         isCombatOver = false;
         isPlayerTurn = true;
+        isSecondPlayerAttack = false;
         DisplayUIForPlayerTurn();
     }
 
@@ -79,26 +82,22 @@ public class CombatManager : MonoBehaviour
         if (isPlayerTurn)
         {
             //PlayerTurn();
-
-
-            // Elementar Attack first
-            if ((int)firstAttack.element <= 3)
+            if (isSecondPlayerAttack)
             {
-                PlayerManager.Instance.Animator.SetTrigger("Shoot");
+                SecondPlayerTurn();
             }
-            else if ((int)firstAttack.element >= 3 && (int)firstAttack.element <= 6)
+            else
             {
-                PlayerManager.Instance.Animator.SetTrigger("Move");
+                FirstPlayerTurn();
             }
-            isPlayerTurn = false;
 
         }
         else
         {
             //EnemyTurn();
             EnemyManager.Instance.Animator.SetTrigger("Move");
-            
-            
+
+
             isPlayerTurn = true;
 
         }
@@ -106,7 +105,7 @@ public class CombatManager : MonoBehaviour
 
     public void DisplayUIForPlayerTurn()
     {
-        Debug.Log("Creating UI for player's turn!");    
+        Debug.Log("Creating UI for player's turn!");
         //Create a new Card Selection UI from thje preset and add it to the ui canvas
         // var newUi = Instantiate(_attackSelectionUiPrefab, _uiCanvas.transform, false);
         // newUi.SetActive(true);
@@ -120,55 +119,135 @@ public class CombatManager : MonoBehaviour
         {
             EndCombat();
         }
+
         if (isCombatOver)
         {
             EndCombat();
         }
+
         Combat();
-        
+
     }
 
 
-    public void PlayerTurn()
+    // public void PlayerTurn()
+    // {
+    //     Debug.Log("Player's turn! (Player is at " + _player.hp + " HP)");
+    //     var firstAttack = _player.FirstAttack;
+    //     var secondAttack = _player.SecondAttack;
+    //
+    //     PlayFXOnHit(firstAttack, secondAttack);
+    //
+    //     var firstAttackDamage = _enemy.CalculateDamage(firstAttack);
+    //     _enemy.TakeDamage(firstAttackDamage);
+    //     var secondAttackDamage = _enemy.CalculateDamage(secondAttack);
+    //     _enemy.TakeDamage(secondAttackDamage);
+    //
+    //     _player.ResetChosenAttacks();
+    // }
+
+    public void OnPlayerHitConnect()
     {
-        Debug.Log("Player's turn! (Player is at " + _player.hp + " HP)");
-        var firstAttack = _player.FirstAttack;
-        var secondAttack = _player.SecondAttack;
-
-        switch (firstAttack.element)
+        if (isSecondPlayerAttack)
         {
-            case Element.UNTYPED:
-                break;
-            case Element.FIRE:
-                fxSpawner.PlayFightFX(Effects.FIRE);
-                break;
-            case Element.ICE:
-                fxSpawner.PlayFightFX(Effects.ICE);
-                break;
-            case Element.VOLT:
-                fxSpawner.PlayFightFX(Effects.VOLT);
-                break;
-            case Element.SLASH:
-                if(secondAttack.element == Element.FIRE)
-                    fxSpawner.PlayFightFX(Effects.FIRESTORM);
-                break;
-            case Element.STAB:
-                break;
-            case Element.BASH:
-                if(secondAttack.element == Element.ICE){    }
-                else
-                {
-                    fxSpawner.PlayFightFX(Effects.BASH);
-                }
-                break;
-        }
+            Debug.Log("Player's second hit connected");
+            var secondAttack = _player.SecondAttack;
 
-        var firstAttackDamage = _enemy.CalculateDamage(firstAttack);
-        _enemy.TakeDamage(firstAttackDamage);
-        var secondAttackDamage = _enemy.CalculateDamage(secondAttack);
-        _enemy.TakeDamage(secondAttackDamage);
-        
-        _player.ResetChosenAttacks();
+            var effectToPlay = GetFXOnHit(secondAttack.element);
+            if (effectToPlay != null)
+            {
+                PlayFXOnHit(effectToPlay!.Value);
+            }
+
+            var firstAttackDamage = _enemy.CalculateDamage(secondAttack);
+            _enemy.TakeDamage(firstAttackDamage);
+            
+            _player.ResetChosenAttacks();
+            isSecondPlayerAttack = false;
+        }
+        else
+        {
+            Debug.Log("Player's first hit connected");
+            var firstAttack = _player.FirstAttack;
+
+            var effectToPlay = GetFXOnHit(firstAttack.element);
+            if (effectToPlay != null)
+            {
+                PlayFXOnHit(effectToPlay!.Value);
+            }
+            
+            var firstAttackDamage = _enemy.CalculateDamage(firstAttack);
+            _enemy.TakeDamage(firstAttackDamage);
+            isSecondPlayerAttack = true;
+        }
+    }
+
+    public void FirstPlayerTurn()
+    {
+        Debug.Log("First Player turn and the selected attacks are " + _player.FirstAttack.attackName + " and " + _player.SecondAttack.attackName);
+        isPlayerTurn = true;
+
+        // Elemental Attacks are Shoot
+        if (ElementFunctions.IsMagicalElement(_player.FirstAttack.element))
+        {
+            PlayerManager.Instance.Animator.SetTrigger("Shoot");
+        }
+        else 
+        {
+            PlayerManager.Instance.Animator.SetTrigger("Move");
+        }
+    }
+
+    public void SecondPlayerTurn()
+    {
+        Debug.Log("Second Player turn and the selected attacks are " + _player.FirstAttack.attackName + " and " + _player.SecondAttack.attackName);
+        isPlayerTurn = false;
+
+        // Elemental attacks are Shoot
+        if (ElementFunctions.IsMagicalElement(_player.SecondAttack.element))
+        {
+            PlayerManager.Instance.Animator.SetTrigger("Shoot");
+        }
+        else
+        {
+            PlayerManager.Instance.Animator.SetTrigger("Move");
+        }
+    }
+
+    public Effects? GetFXOnHit(Element element)
+    {
+        switch (element)
+            {
+                case Element.UNTYPED:
+                    break;
+                case Element.FIRE:
+                    return Effects.FIRE;
+                case Element.ICE:
+                    return Effects.ICE;
+                case Element.VOLT:
+                    return Effects.VOLT;
+                case Element.SLASH:
+                    break;
+                case Element.STAB:
+                    break;
+                case Element.BASH:
+                    return Effects.BASH;
+            }
+        return null;
+    }
+
+    public Effects? GetFXOnHit(Element element, Element secondElement)
+    {
+        if (element == Element.SLASH && secondElement == Element.FIRE)
+            return Effects.FIRESTORM;
+        if (element == Element.BASH && secondElement == Element.ICE)
+            return null;
+        return null;
+    }
+
+    public void PlayFXOnHit(Effects effects)
+    {
+        fxSpawner.PlayFightFX(effects);
     }
 
     public void EnemyTurn()
@@ -193,6 +272,7 @@ public class CombatManager : MonoBehaviour
         else
         {
             PlayerWonCombat();
+            _player.ResetChosenAttacks();
         }
 
     }

@@ -12,7 +12,7 @@ public class PlayerAnimationController : MonoBehaviour
 
     public void OnAnimationAttack()
     {
-        CombatManager.Instance.PlayerTurn();
+        CombatManager.Instance.OnPlayerHitConnect();
         EnemyManager.Instance.Animator.SetTrigger("Hit");
         if (EnemyManager.Instance.IsDead())
         {
@@ -54,7 +54,7 @@ public class PlayerAnimationController : MonoBehaviour
 
         }
 
-        BulletProjectile.OnProjectileHit += CombatManager.Instance.PlayerTurn;
+        BulletProjectile.OnProjectileHit += CombatManager.Instance.OnPlayerHitConnect;
 
     }
 }

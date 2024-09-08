@@ -24,6 +24,11 @@ public class ElementFunctions : MonoBehaviour
                 return "Untyped";
         }
     }
+
+    public static bool IsMagicalElement(Element element)
+    {
+        return element == Element.FIRE || element == Element.ICE || element == Element.VOLT;
+    }
     
     public static string GetElementColorHexString(Element element)
     {
