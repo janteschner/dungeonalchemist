@@ -1131,10 +1131,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 159826087}
     - target: {fileID: 5938163486821607394, guid: 98d18e48544f648448795c08cf5a5ca9, type: 3}
-      propertyPath: firstEnemy
-      value: 
-      objectReference: {fileID: 11400000, guid: 4a3947242555980428ef9476ca16e963, type: 2}
-    - target: {fileID: 5938163486821607394, guid: 98d18e48544f648448795c08cf5a5ca9, type: 3}
       propertyPath: _actionButtonContainerScript
       value: 
       objectReference: {fileID: 2065888051}
@@ -1175,10 +1171,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelUp
       objectReference: {fileID: 0}
-    - target: {fileID: 2399888823981529160, guid: 4fbb9fb9a3d0f6a4eb8ff7fe2071e432, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6309686905202215390, guid: 4fbb9fb9a3d0f6a4eb8ff7fe2071e432, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.17387076
@@ -1218,10 +1210,6 @@ PrefabInstance:
     - target: {fileID: 6309686905202215390, guid: 4fbb9fb9a3d0f6a4eb8ff7fe2071e432, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8190451542989655401, guid: 4fbb9fb9a3d0f6a4eb8ff7fe2071e432, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
