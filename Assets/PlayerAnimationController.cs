@@ -39,7 +39,12 @@ public class PlayerAnimationController : MonoBehaviour
     public void OnAnimationShooting()
     {
         GameObject FXObject = null;
-        switch (PlayerManager.Instance.FirstAttack.element)
+        var element = PlayerManager.Instance.FirstAttack.element;
+        if (CombatManager.Instance.isSecondPlayerAttack)
+        {
+            element = PlayerManager.Instance.SecondAttack.element;
+        }
+        switch (element)
         {
             case Element.UNTYPED:
                 break;

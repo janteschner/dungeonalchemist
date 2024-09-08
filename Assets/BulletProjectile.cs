@@ -18,6 +18,7 @@ public class BulletProjectile : MonoBehaviour
         Destroy(gameObject);
     }
 
+
     public void OnPlayerShootBullet()
     {
         PlayerManager.Instance.Controller.OnAnimationAttack();
