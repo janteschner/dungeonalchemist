@@ -125,6 +125,7 @@ public class PlayerManager : MonoBehaviour
         DamageNumberSpawner.Instance.SpawnDamageNumber(damageInfo, false);
         hp -= damageInfo.damage;
         HealthbarManager.Instance.SetPlayerHP(hp);
+        EnemyManager.Instance.HealParalysis();
     }
     
     public void Heal(int healing)
