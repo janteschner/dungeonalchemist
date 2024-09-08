@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f68c46d7ea41eebe17ad6102607f14, type: 3}
   m_Name: Goblin
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 10
   enemyName: Goblin
   descriptionBasic: A green-skinned fellow from the upper floors of the dungeon
   descriptionDetailed: They seem to not shy back from getting up close and personal

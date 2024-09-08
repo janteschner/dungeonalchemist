@@ -96,14 +96,14 @@ public class CombatManager : MonoBehaviour
         }
         else
         {
-            if ((int)enemyAttack.element <= 3 && _enemy.CurrentEnemyType.bCanShoot)
-            {
-                EnemyManager.Instance.Animator.SetTrigger("Shoot");
-            }
-            else
-            {
+            // if ((int)enemyAttack.element <= 3 && _enemy.CurrentEnemyType.bCanShoot)
+            // {
+            //     EnemyManager.Instance.Animator.SetTrigger("Shoot");
+            // }
+            // else
+            // {
                 EnemyManager.Instance.Animator.SetTrigger("Move");
-            }
+            // }
 
             isPlayerTurn = true;
 
@@ -270,7 +270,7 @@ public class CombatManager : MonoBehaviour
         isPlayerTurn = true;
 
         // Elemental Attacks are Shoot
-        if (ElementFunctions.IsMagicalElement(_player.FirstAttack.element))
+        if (false)
         {
             PlayerManager.Instance.Animator.SetTrigger("Shoot");
         }
@@ -283,6 +283,7 @@ public class CombatManager : MonoBehaviour
     public void ComboTurn()
     {
         Debug.Log("Combo being used! The combo is " + _player.CurrentCombo);
+        isPlayerTurn = false;
 
         // // Elemental Attacks are Shoot
         // if (ElementFunctions.IsMagicalElement(_player.FirstAttack.element))
@@ -299,7 +300,7 @@ public class CombatManager : MonoBehaviour
         isPlayerTurn = false;
 
         // Elemental attacks are Shoot
-        if (ElementFunctions.IsMagicalElement(_player.SecondAttack.element))
+        if (false)
         {
             PlayerManager.Instance.Animator.SetTrigger("Shoot");
         }
@@ -368,7 +369,10 @@ public class CombatManager : MonoBehaviour
         var damage = _player.CalculateDamage(attack);
         NotebookScript.Instance.AddAttack(_enemy.CurrentEnemyType, attack);
         _player.TakeDamage(damage);
+    }
 
+    public void EnemySkipsTurnBecauseOfFreeze()
+    {
         
     }
 
