@@ -158,7 +158,7 @@ public class CombatManager : MonoBehaviour
         if (_player.CurrentCombo != Combo.NONE)
         {
             Debug.Log("Player's Combo Connected!");
-            var effectToPlay = GetFXOnHit(_player.FirstAttack.element);
+            var effectToPlay = GetFXOnHit(_player.FirstAttack.element, _player.SecondAttack.element);
             if (effectToPlay != null)
             {
                 PlayFXOnHit(effectToPlay!.Value);
