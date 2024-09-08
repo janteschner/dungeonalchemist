@@ -205,6 +205,7 @@ public class EnemyManager : MonoBehaviour
     public void RemoveStatus()
     {
         CurrentStatusEffect = StatusEffect.NONE;
+        currentPrefab.GetComponentInChildren<SpriteRenderer>().color = Color.white;
         Debug.Log("Enemy status effect removed!");
     }
 
@@ -217,6 +218,8 @@ public class EnemyManager : MonoBehaviour
         if(Random.Range(0f, 1f) < chance)
         {
             CurrentStatusEffect = statusEffect;
+            currentPrefab.GetComponentInChildren<SpriteRenderer>().color = StatusEffectFunctions.GetStatusColor(statusEffect);
+
             Debug.Log("Enemy gained status effect " + statusEffect);
         }
     }
