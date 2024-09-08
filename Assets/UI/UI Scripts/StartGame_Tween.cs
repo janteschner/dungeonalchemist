@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class StartGame_Tween: MonoBehaviour
 {
+    
+    public static StartGame_Tween Instance { get; private set; }
+    
     //[SerializeField]
     private GameObject startButton;
 
@@ -18,12 +21,27 @@ public class StartGame_Tween: MonoBehaviour
     [SerializeField]
     private Vector2 screenHeightWidth;
 
-
+    [SerializeField] private GameObject eyes;
+    
+    private void Awake()
+    {
+        if (Instance != null && Instance != this) 
+        { 
+            Destroy(this); 
+        } 
+        else 
+        { 
+            Instance = this; 
+        }
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
-        screenHeightWidth.x = Screen.width;
-        screenHeightWidth.y = Screen.height;
+        screenHeightWidth.x = 2000;
+        screenHeightWidth.y = 1500;
+        
+        eyes.SetActive(false);
 
         startButton = this.gameObject;
     }
@@ -67,5 +85,15 @@ public class StartGame_Tween: MonoBehaviour
         mainMenuDoor_1.DOAnchorPosX(screenHeightWidth.x, mainMenuDoorSO.TweenDuration, mainMenuDoorSO.TweenSnapping);
 
         startButton.SetActive(false);
+    }
+
+    public void CloseMouth(bool playerDied)
+    {
+        mainMenuDoor_0.DOAnchorPosY(0, mainMenuDoorSO.TweenDuration, mainMenuDoorSO.TweenSnapping);
+        mainMenuDoor_1.DOAnchorPosY(0, mainMenuDoorSO.TweenDuration, mainMenuDoorSO.TweenSnapping);
+        if (!playerDied)
+        {
+            eyes.SetActive(true);
+        }
     }
 }
