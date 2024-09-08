@@ -183,6 +183,7 @@ public class EnemyManager : MonoBehaviour
         NotebookScript.Instance.AddElement(_currentEnemyType, damageInfo.element);
         Hp -= damageInfo.damage;
         HealthbarManager.Instance.SetEnemyHP(hp);
+        HealFreeze();
     }
 
     public void MaybeTakeFireDamage()
@@ -210,6 +211,22 @@ public class EnemyManager : MonoBehaviour
         CurrentStatusEffect = StatusEffect.NONE;
         currentPrefab.GetComponentInChildren<SpriteRenderer>().color = Color.white;
         Debug.Log("Enemy status effect removed!");
+    }
+
+    public void HealParalysis()
+    {
+        if(CurrentStatusEffect == StatusEffect.PARALYSIS)
+        {
+            RemoveStatus();
+        }
+    }
+    
+    public void HealFreeze()
+    {
+        if(CurrentStatusEffect == StatusEffect.FREEZE)
+        {
+            RemoveStatus();
+        }
     }
 
     public void MaybeApplyStatus(StatusEffect statusEffect, float chance)

@@ -667,7 +667,13 @@ MonoBehaviour:
   goblin: {fileID: 11400000, guid: 4a3947242555980428ef9476ca16e963, type: 2}
   skeleton: {fileID: 11400000, guid: 31161c7c211bf334e848e7d15d1de928, type: 2}
   wizard: {fileID: 11400000, guid: 52c5099d6ce24d84395ccf06baa03a18, type: 2}
+  fireWizard: {fileID: 11400000, guid: c8273c5e5673f3a4281e6bf9bdbf61b5, type: 2}
+  iceWizard: {fileID: 11400000, guid: 762679f713a207049a77a397bd4cfb29, type: 2}
+  voltWizard: {fileID: 11400000, guid: 01ff12fa70a3b474d8ecf209d16f86bc, type: 2}
   dragon: {fileID: 11400000, guid: 43126a9c18c64bd4698341e3d98b4c2b, type: 2}
+  fireDragon: {fileID: 11400000, guid: 43126a9c18c64bd4698341e3d98b4c2b, type: 2}
+  iceDragon: {fileID: 11400000, guid: d6fa42650911c114c8440b4e240ebf3b, type: 2}
+  voltDragon: {fileID: 11400000, guid: cfa64fb15950e9e42815f2b63f44d90c, type: 2}
 --- !u!1001 &2039729155
 PrefabInstance:
   m_ObjectHideFlags: 0

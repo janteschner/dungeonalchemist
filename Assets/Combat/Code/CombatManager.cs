@@ -166,6 +166,24 @@ public class CombatManager : MonoBehaviour
 
             var comboDamage = _enemy.CalculateComboDamage(_player.CurrentCombo, _player.CurrentComboBaseDamage);
             _enemy.TakeDamage(comboDamage);
+            _enemy.MaybeTakeFireDamage();
+
+            if (_player.CurrentCombo == Combo.THORS_HAMMER)
+            {
+                _enemy.MaybeApplyStatus(StatusEffect.PARALYSIS, 0.75f);
+            }
+            if (_player.CurrentCombo == Combo.FLAME_BLADE)
+            {
+                _enemy.MaybeApplyStatus(StatusEffect.BURN, 0.75f);
+            }
+            if (_player.CurrentCombo == Combo.FIRE_ICE)
+            {
+                _enemy.MaybeApplyStatus(StatusEffect.FREEZE, 0.75f);
+            }
+            if (_player.CurrentCombo == Combo.ICE_FIRE)
+            {
+                _enemy.MaybeApplyStatus(StatusEffect.BURN, 0.75f);
+            }
 
             _player.ResetChosenAttacks();
             _player.ResetCombo();
