@@ -41,7 +41,7 @@ public class ElementFunctions : MonoBehaviour
                case     Combo.VOLT_BLADE: return Element.VOLT;
                case Combo.FIRE_ICE: return Element.FIRE;
                case     Combo.ICE_FIRE: return Element.ICE;
-               case Combo.THORS_HAMMER: return Element.VOLT;
+               case Combo.THORS_HAMMER: return Element.BASH;
                default: return Element.SLASH;
         }
     }

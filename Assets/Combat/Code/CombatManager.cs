@@ -352,7 +352,8 @@ public class CombatManager : MonoBehaviour
 
     public Effects? GetFXOnHit(Element element, Element secondElement)
     {
-        if (element == Element.SLASH && secondElement == Element.FIRE)
+        Debug.Log("checking two elements fx: " + element + " and " + secondElement + " for fx");
+        if (element == Element.FIRE && secondElement == Element.SLASH)
             return Effects.FIRESTORM;
         if (element == Element.BASH && secondElement == Element.ICE)
             return null;
@@ -426,6 +427,7 @@ public class CombatManager : MonoBehaviour
     {
         Debug.Log("Player lost!");
 
+        StartGame_Tween.Instance.CloseMouth();
 
         // Move Player
         PlayerManager.Instance.Animator.SetTrigger("Die");

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1127946074438748676}
   - component: {fileID: 8313447897771170321}
+  - component: {fileID: 1898101379323697433}
   m_Layer: 0
   m_Name: Constants
   m_TagString: Untagged
@@ -51,3 +52,26 @@ MonoBehaviour:
   stabIcon: {fileID: 21300000, guid: 9f11d2650b8fd8f479bd144ba30fadc2, type: 3}
   bashIcon: {fileID: 21300000, guid: 63fda6f50d259d745a316c190b26369f, type: 3}
   healingIcon: {fileID: 21300000, guid: 0741edb7c07e35942944a041f7fe3897, type: 3}
+--- !u!114 &1898101379323697433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8778036611335671748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84684149f1f397941bdf9dae7a9517ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLevel: 0
+  goblin: {fileID: 11400000, guid: 4a3947242555980428ef9476ca16e963, type: 2}
+  skeleton: {fileID: 11400000, guid: 31161c7c211bf334e848e7d15d1de928, type: 2}
+  wizard: {fileID: 11400000, guid: 52c5099d6ce24d84395ccf06baa03a18, type: 2}
+  fireWizard: {fileID: 11400000, guid: c8273c5e5673f3a4281e6bf9bdbf61b5, type: 2}
+  iceWizard: {fileID: 11400000, guid: 762679f713a207049a77a397bd4cfb29, type: 2}
+  voltWizard: {fileID: 11400000, guid: 01ff12fa70a3b474d8ecf209d16f86bc, type: 2}
+  dragon: {fileID: 11400000, guid: 43126a9c18c64bd4698341e3d98b4c2b, type: 2}
+  fireDragon: {fileID: 11400000, guid: 43126a9c18c64bd4698341e3d98b4c2b, type: 2}
+  iceDragon: {fileID: 11400000, guid: d6fa42650911c114c8440b4e240ebf3b, type: 2}
+  voltDragon: {fileID: 11400000, guid: cfa64fb15950e9e42815f2b63f44d90c, type: 2}
