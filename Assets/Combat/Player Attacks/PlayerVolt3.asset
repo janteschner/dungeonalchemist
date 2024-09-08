@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 5
   attackName: Teravolt
-  _attackDescription: Deals #damage #element Damage
+  _attackDescription: Deals #damage #element Damage (#chance for #status)
   element: 3
   isHealingPotion: 0
+  statusEffect: 3
+  statusEffectChance: 0.8

@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 2
   attackName: Fire
-  _attackDescription: Deals #damage #element Damage
+  _attackDescription: Deals #damage #element Damage (#chance for #status)
   element: 1
-  upgradesTo: {fileID: 0}
+  isHealingPotion: 0
+  statusEffect: 1
+  statusEffectChance: 0.2
