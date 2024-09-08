@@ -75,6 +75,8 @@ public class EnemyManager : MonoBehaviour
 
         CombatManager.Instance.fxSpawner = currentPrefab.GetComponentInChildren<FXSpawner>();
 
+        HealthbarManager.Instance.SetEnemyType();
+
         Debug.Log("Preparing enemy for combat! Enemy is " + enemyType.enemyName + " with " + Hp + " HP!");
     }
 
@@ -180,6 +182,7 @@ public class EnemyManager : MonoBehaviour
         DamageNumberSpawner.Instance.SpawnDamageNumber(damageInfo, true);
         NotebookScript.Instance.AddElement(_currentEnemyType, damageInfo.element);
         Hp -= damageInfo.damage;
+        HealthbarManager.Instance.SetEnemyHP(hp);
     }
 
     public void MaybeTakeFireDamage()

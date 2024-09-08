@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f68c46d7ea41eebe17ad6102607f14, type: 3}
   m_Name: Wizard
   m_EditorClassIdentifier: 
-  maxHealth: 150
+  maxHealth: 16
   enemyName: Wizard
   descriptionBasic: classic wizard
   descriptionDetailed: 
@@ -24,3 +24,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e54ece95170982d4a92bd53470f48e89, type: 2}
   healthbarSprite: {fileID: 0}
   prefab: {fileID: 4424445705053567557, guid: 599616a9c6a271040a3e08861cc0096f, type: 3}
+  bCanShoot: 0
+  id: wizard

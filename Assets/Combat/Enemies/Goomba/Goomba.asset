@@ -24,3 +24,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ce72e52d54db9564cb2e9744a444b11f, type: 2}
   healthbarSprite: {fileID: 0}
   prefab: {fileID: 277001522623733879, guid: 5ba7d8e0a7859a34faeb0e6507de4223, type: 3}
+  bCanShoot: 0
+  id: goomba

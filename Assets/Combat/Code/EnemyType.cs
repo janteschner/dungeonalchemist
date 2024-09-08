@@ -1,8 +1,11 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Combat
 {
+    [Serializable]
     [CreateAssetMenu(menuName = "Enemy Type")]
     public class EnemyType : ScriptableObject
     {
@@ -17,6 +20,8 @@ namespace Combat
         [SerializeField] public Sprite healthbarSprite;
         [SerializeField] public GameObject prefab;
         [SerializeField] public bool bCanShoot = false;
+        [SerializeField] public string id;
+
 
         public Attack GetRandomAttack()
         {

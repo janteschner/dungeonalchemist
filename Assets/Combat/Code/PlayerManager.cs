@@ -21,6 +21,7 @@ public class PlayerManager : MonoBehaviour
     public PlayerAnimationController Controller { get; private set; }
 
     public int hp;
+    
     [SerializeField] private GameObject PlayerPrefab;
  
     private void Awake()
@@ -123,12 +124,18 @@ public class PlayerManager : MonoBehaviour
         Debug.Log("Player took " + damageInfo.damage + " damage!");
         DamageNumberSpawner.Instance.SpawnDamageNumber(damageInfo, false);
         hp -= damageInfo.damage;
+        HealthbarManager.Instance.SetPlayerHP(hp);
     }
     
     public void Heal(int healing)
     {
         Debug.Log("Player healed " + healing + " damage!");
         hp += healing;
+        if (hp > CombatManager.Instance.startingHp)
+        {
+            hp = CombatManager.Instance.startingHp;
+        }
+        HealthbarManager.Instance.SetPlayerHP(hp);
     }
 
     public bool IsDead()
