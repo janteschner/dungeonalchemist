@@ -12,7 +12,14 @@ public class EnemyProgression : MonoBehaviour
     public EnemyType goblin;
     public EnemyType skeleton;
     public EnemyType wizard;
+    public EnemyType fireWizard;
+    public EnemyType iceWizard;
+    public EnemyType voltWizard;
     public EnemyType dragon;
+    public EnemyType fireDragon;
+    public EnemyType iceDragon;
+    public EnemyType voltDragon;
+
     
     private void Awake()
     {
@@ -53,9 +60,35 @@ public class EnemyProgression : MonoBehaviour
             case 1:
                 return skeleton;
             case 2:
-                return wizard;
+            {
+                var randomWizard = Random.Range(0, 3);
+                switch(randomWizard)
+                {
+                    case 0:
+                        return fireWizard;
+                    case 1:
+                        return iceWizard;
+                    case 2:
+                        return voltWizard;
+                    default:
+                        return wizard;
+                }
+            }
             case 3:
-                return dragon;
+            {
+                var randomDragon = Random.Range(0, 3);
+                switch(randomDragon)
+                {
+                    case 0:
+                        return fireDragon;
+                    case 1:
+                        return iceDragon;
+                    case 2:
+                        return voltDragon;
+                    default:
+                        return dragon;
+                }
+            }
             default:
                 return goblin;
         }
