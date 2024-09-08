@@ -14,7 +14,6 @@ public class BulletProjectile : MonoBehaviour
 
     public void OnAnimationFinished()
     {
-        CombatManager.Instance.Combat();
         Destroy(gameObject);
     }
 
