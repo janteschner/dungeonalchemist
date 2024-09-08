@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Combat.Player_Attacks.Combos;
 using UnityEngine;
 
 public class ElementFunctions : MonoBehaviour
@@ -28,6 +29,21 @@ public class ElementFunctions : MonoBehaviour
     public static bool IsMagicalElement(Element element)
     {
         return element == Element.FIRE || element == Element.ICE || element == Element.VOLT;
+    }
+
+    public static Element GetComboElement(Combo combo)
+    {
+        switch (combo)
+        {
+               case Combo.NONE: return Element.SLASH;
+               case     Combo.ICE_HAMMER: return Element.ICE;
+               case Combo.FLAME_BLADE: return Element.FIRE;
+               case     Combo.VOLT_BLADE: return Element.VOLT;
+               case Combo.FIRE_ICE: return Element.FIRE;
+               case     Combo.ICE_FIRE: return Element.ICE;
+               case Combo.THORS_HAMMER: return Element.VOLT;
+               default: return Element.SLASH;
+        }
     }
     
     public static string GetElementColorHexString(Element element)

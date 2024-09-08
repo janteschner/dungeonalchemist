@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Combat;
+using Combat.Player_Attacks.Combos;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -154,42 +155,106 @@ public class CombatManager : MonoBehaviour
 
     public void OnPlayerHitConnect()
     {
-        if (isSecondPlayerAttack)
+        if (_player.CurrentCombo != Combo.NONE)
         {
-            Debug.Log("Player's second hit connected");
-            var secondAttack = _player.SecondAttack;
-
-            var effectToPlay = GetFXOnHit(secondAttack.element);
+            Debug.Log("Player's Combo Connected!");
+            var effectToPlay = GetFXOnHit(_player.FirstAttack.element);
             if (effectToPlay != null)
             {
                 PlayFXOnHit(effectToPlay!.Value);
             }
 
-            var firstAttackDamage = _enemy.CalculateDamage(secondAttack);
-            _enemy.TakeDamage(firstAttackDamage);
-            
+            var comboDamage = _enemy.CalculateComboDamage(_player.CurrentCombo, _player.CurrentComboBaseDamage);
+            _enemy.TakeDamage(comboDamage);
+
             _player.ResetChosenAttacks();
+            _player.ResetCombo();
             isSecondPlayerAttack = false;
         }
         else
         {
-            Debug.Log("Player's first hit connected");
-            var firstAttack = _player.FirstAttack;
-
-            var effectToPlay = GetFXOnHit(firstAttack.element);
-            if (effectToPlay != null)
+            if (isSecondPlayerAttack)
             {
-                PlayFXOnHit(effectToPlay!.Value);
+                Debug.Log("Player's second hit connected");
+                var secondAttack = _player.SecondAttack;
+
+                var effectToPlay = GetFXOnHit(secondAttack.element);
+                if (effectToPlay != null)
+                {
+                    PlayFXOnHit(effectToPlay!.Value);
+                }
+
+                var firstAttackDamage = _enemy.CalculateDamage(secondAttack);
+                _enemy.TakeDamage(firstAttackDamage);
+
+                _player.ResetChosenAttacks();
+                isSecondPlayerAttack = false;
             }
-            
-            var firstAttackDamage = _enemy.CalculateDamage(firstAttack);
-            _enemy.TakeDamage(firstAttackDamage);
-            isSecondPlayerAttack = true;
+            else
+            {
+                Debug.Log("Player's first hit connected");
+                var firstAttack = _player.FirstAttack;
+
+                var effectToPlay = GetFXOnHit(firstAttack.element);
+                if (effectToPlay != null)
+                {
+                    PlayFXOnHit(effectToPlay!.Value);
+                }
+
+                var firstAttackDamage = _enemy.CalculateDamage(firstAttack);
+                _enemy.TakeDamage(firstAttackDamage);
+                isSecondPlayerAttack = true;
+            }
         }
+    }
+
+    public bool MaybeComboTurn()
+    {
+        var firstAttack = _player.FirstAttack;
+        var secondAttack = _player.SecondAttack;
+        if (firstAttack.element == Element.ICE && secondAttack.element == Element.BASH)
+        {
+            _player.SetCombo(Combo.ICE_HAMMER, firstAttack, secondAttack);
+            return true;
+        }
+        if (firstAttack.element == Element.FIRE && secondAttack.element == Element.SLASH)
+        {
+            _player.SetCombo(Combo.FLAME_BLADE, firstAttack, secondAttack);
+            return true;
+        }
+        if (firstAttack.element == Element.VOLT && secondAttack.element == Element.SLASH)
+        {
+            _player.SetCombo(Combo.VOLT_BLADE, firstAttack, secondAttack);
+            return true;
+        }
+        if (firstAttack.element == Element.FIRE && secondAttack.element == Element.ICE)
+        {
+            _player.SetCombo(Combo.FIRE_ICE, firstAttack, secondAttack);
+            return true;
+        }
+        if (firstAttack.element == Element.ICE && secondAttack.element == Element.FIRE)
+        {
+            _player.SetCombo(Combo.ICE_FIRE, firstAttack, secondAttack);
+            return true;
+        }
+        if (firstAttack.element == Element.BASH && secondAttack.element == Element.VOLT)
+        {
+            _player.SetCombo(Combo.THORS_HAMMER, firstAttack, secondAttack);
+            return true;
+        }
+        return false;
     }
 
     public void FirstPlayerTurn()
     {
+        var usedCombo = MaybeComboTurn();
+
+        if (usedCombo)
+        {
+            ComboTurn();
+            return;
+        }
+        
         Debug.Log("First Player turn and the selected attacks are " + _player.FirstAttack.attackName + " and " + _player.SecondAttack.attackName);
         isPlayerTurn = true;
 
@@ -202,6 +267,19 @@ public class CombatManager : MonoBehaviour
         {
             PlayerManager.Instance.Animator.SetTrigger("Move");
         }
+    }
+
+    public void ComboTurn()
+    {
+        Debug.Log("Combo being used! The combo is " + _player.CurrentCombo);
+
+        // // Elemental Attacks are Shoot
+        // if (ElementFunctions.IsMagicalElement(_player.FirstAttack.element))
+        // {
+        //     PlayerManager.Instance.Animator.SetTrigger("Shoot");
+        // }
+        PlayerManager.Instance.Animator.SetTrigger("Move");
+        
     }
 
     public void SecondPlayerTurn()
