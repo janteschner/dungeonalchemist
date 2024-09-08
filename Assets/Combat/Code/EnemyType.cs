@@ -17,6 +17,8 @@ namespace Combat
         [SerializeField] public Sprite healthbarSprite;
         [SerializeField] public GameObject prefab;
         [SerializeField] public bool bCanShoot = false;
+        [SerializeField] public string id;
+
 
         public Attack GetRandomAttack()
         {

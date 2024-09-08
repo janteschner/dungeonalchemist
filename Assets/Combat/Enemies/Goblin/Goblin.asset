@@ -26,3 +26,4 @@ MonoBehaviour:
   healthbarSprite: {fileID: 21300000, guid: bb6ee6206affb1a479d9db0c9fdc305d, type: 3}
   prefab: {fileID: 1695669433782025666, guid: 1f6c3e7d8f5077c47a8242a1c58f1e7c, type: 3}
   bCanShoot: 0
+  id: goblin

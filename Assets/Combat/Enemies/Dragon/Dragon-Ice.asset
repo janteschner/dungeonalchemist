@@ -22,3 +22,5 @@ MonoBehaviour:
   availableAttacks: []
   healthbarSprite: {fileID: 21300000, guid: 6f5ef6847db5d91428eb88cc7abb7048, type: 3}
   prefab: {fileID: 6356324149684810542, guid: 4bcc4f51877dc784da329ca4b6610bab, type: 3}
+  bCanShoot: 0
+  id: dragon-ice
