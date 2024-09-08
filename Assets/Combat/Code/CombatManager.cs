@@ -96,12 +96,11 @@ public class CombatManager : MonoBehaviour
         }
         else
         {
-            //EnemyTurn();
-            if ((int)enemyAttack.element <= 3)
+            if ((int)enemyAttack.element <= 3 && _enemy.CurrentEnemyType.bCanShoot)
             {
                 EnemyManager.Instance.Animator.SetTrigger("Shoot");
             }
-            else if ((int)enemyAttack.element >= 3 && (int)firstAttack.element <= 6)
+            else
             {
                 EnemyManager.Instance.Animator.SetTrigger("Move");
             }
@@ -345,6 +344,22 @@ public class CombatManager : MonoBehaviour
     {
         fxSpawner.PlayFightFX(effects);
     }
+
+    public void OnEnemyHitConnect()
+    {
+        var enemyAttack = _enemy.CurrentAttack;
+
+        var effectToPlay = GetFXOnHit(enemyAttack.element);
+        if (effectToPlay != null)
+        {
+            PlayFXOnHit(effectToPlay!.Value);
+        }
+
+        var damage = _player.CalculateDamage(enemyAttack);
+        NotebookScript.Instance.AddAttack(_enemy.CurrentEnemyType, enemyAttack);
+        _player.TakeDamage(damage);
+    }
+
 
     public void EnemyTurn()
     {

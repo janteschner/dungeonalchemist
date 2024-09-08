@@ -13,7 +13,7 @@ public class FXSpawner : MonoBehaviour
     [SerializeField] GameObject BurningFX;
     [SerializeField] GameObject FireStormFX;
 
-    public static FXSpawner Instance = new FXSpawner();
+    public static FXSpawner Instance { get; private set; }
 
     private void Awake()
     {
