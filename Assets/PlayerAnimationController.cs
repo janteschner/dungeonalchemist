@@ -25,9 +25,7 @@ public class PlayerAnimationController : MonoBehaviour
     public void OnAnimationFinished()
     {
         PlayerManager.Instance.Animator.SetInteger("ChoseAttack", 0);
-
-        if(CombatManager.Instance.isSecondPlayerAttack)
-            CombatManager.Instance.Combat();
+        CombatManager.Instance.Combat();
     }
 
     public void OnAnimationGameOver()
