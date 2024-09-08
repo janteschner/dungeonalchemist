@@ -141,6 +141,9 @@ MonoBehaviour:
   availableAttacks: []
   FirstAttack: {fileID: 0}
   SecondAttack: {fileID: 0}
+  CurrentCombo: 0
+  CurrentComboBaseDamage: 0
+  shootOrigin: {fileID: 0}
   hp: 0
   PlayerPrefab: {fileID: 0}
 --- !u!114 &6397948438219810068
@@ -155,6 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3dc7d550aca0134a9ee793ee965795e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentStatusEffect: 0
+  CurrentAttack: {fileID: 0}
   EnemyPrefab: {fileID: 277001522623733879, guid: 5ba7d8e0a7859a34faeb0e6507de4223, type: 3}
 --- !u!114 &5938163486821607394
 MonoBehaviour:
@@ -170,9 +175,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actionButtonContainerScript: {fileID: 0}
   defaultAttack: {fileID: 11400000, guid: 2666fb4ccc243af48ac629bc1a1ebafb, type: 2}
-  firstEnemy: {fileID: 11400000, guid: 2cc7b3b402d24984d869a95e2e7e1810, type: 2}
+  firstEnemy: {fileID: 11400000, guid: 4a3947242555980428ef9476ca16e963, type: 2}
   fxSpawner: {fileID: 0}
   startingHp: 10
   isPlayerTurn: 0
+  isSecondPlayerAttack: 0
   isEnemyTurn: 0
   isCombatOver: 0
