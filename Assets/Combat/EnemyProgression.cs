@@ -50,6 +50,7 @@ public class EnemyProgression : MonoBehaviour
     {
         if(currentLevel >= 4)
         {
+            StartGame_Tween.Instance.CloseMouth(false);
             Debug.Log("You win!");
             return goblin;
         }

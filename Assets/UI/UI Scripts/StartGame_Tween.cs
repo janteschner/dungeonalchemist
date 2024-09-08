@@ -20,6 +20,8 @@ public class StartGame_Tween: MonoBehaviour
 
     [SerializeField]
     private Vector2 screenHeightWidth;
+
+    [SerializeField] private GameObject eyes;
     
     private void Awake()
     {
@@ -38,6 +40,8 @@ public class StartGame_Tween: MonoBehaviour
     {
         screenHeightWidth.x = 2000;
         screenHeightWidth.y = 1500;
+        
+        eyes.SetActive(false);
 
         startButton = this.gameObject;
     }
@@ -83,9 +87,13 @@ public class StartGame_Tween: MonoBehaviour
         startButton.SetActive(false);
     }
 
-    public void CloseMouth()
+    public void CloseMouth(bool playerDied)
     {
         mainMenuDoor_0.DOAnchorPosY(0, mainMenuDoorSO.TweenDuration, mainMenuDoorSO.TweenSnapping);
         mainMenuDoor_1.DOAnchorPosY(0, mainMenuDoorSO.TweenDuration, mainMenuDoorSO.TweenSnapping);
+        if (!playerDied)
+        {
+            eyes.SetActive(true);
+        }
     }
 }

@@ -427,7 +427,7 @@ public class CombatManager : MonoBehaviour
     {
         Debug.Log("Player lost!");
 
-        StartGame_Tween.Instance.CloseMouth();
+        StartGame_Tween.Instance.CloseMouth(true);
 
         // Move Player
         PlayerManager.Instance.Animator.SetTrigger("Die");

@@ -756,10 +756,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartingMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 7833745029304333947, guid: 2e35fba5a9fd9c94583c2f45f8496706, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8619623204543469409, guid: 2e35fba5a9fd9c94583c2f45f8496706, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -791,14 +787,6 @@ PrefabInstance:
     - target: {fileID: 8619623204543469409, guid: 2e35fba5a9fd9c94583c2f45f8496706, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8619623204543469409, guid: 2e35fba5a9fd9c94583c2f45f8496706, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8619623204543469409, guid: 2e35fba5a9fd9c94583c2f45f8496706, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8619623204543469409, guid: 2e35fba5a9fd9c94583c2f45f8496706, type: 3}
       propertyPath: m_LocalPosition.x
