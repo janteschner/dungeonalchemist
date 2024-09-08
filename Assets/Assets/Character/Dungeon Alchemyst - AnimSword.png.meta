@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a870402d23b5ba84a959ab2e1c6e7549
+guid: 0c77fcb8576f105489dc254c8e362d86
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -107,7 +107,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Server
+    buildTarget: Windows Store Apps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -120,7 +120,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Windows Store Apps
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -136,12 +136,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dungeon Alchemyst - AnimHammer_0
+      name: Dungeon Alchemyst - AnimSword_0
       rect:
         serializedVersion: 2
         x: 46
         y: 241
-        width: 340
+        width: 254
         height: 598
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -150,20 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d25336e67da48ec4fb076166ff12ccc7
-      internalID: 1535327130
+      spriteID: 74a1e35c53aa6204ca1f6729b06f9420
+      internalID: 420613561
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon Alchemyst - AnimHammer_1
+      name: Dungeon Alchemyst - AnimSword_1
       rect:
         serializedVersion: 2
-        x: 483
+        x: 447
         y: 241
-        width: 462
-        height: 642
+        width: 335
+        height: 599
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 590d130ddfb9d0e46b219e441f34a2b9
-      internalID: 1620472371
+      spriteID: 9e0888f00f2669742b61d7992018dacc
+      internalID: 1266792885
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon Alchemyst - AnimHammer_2
+      name: Dungeon Alchemyst - AnimSword_2
       rect:
         serializedVersion: 2
-        x: 1068
+        x: 1083
         y: 241
-        width: 289
-        height: 668
+        width: 257
+        height: 708
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,19 +192,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0395973ebc7ad240aafb751357dd339
-      internalID: -69135493
+      spriteID: 2b226d0615313ca41be9c9fcd783194c
+      internalID: -1566687829
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon Alchemyst - AnimHammer_3
+      name: Dungeon Alchemyst - AnimSword_3
       rect:
         serializedVersion: 2
-        x: 1547
+        x: 1590
         y: 241
-        width: 327
+        width: 284
         height: 595
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -213,8 +213,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15c73c86501fd6a4487310d26ed70fbf
-      internalID: -1472021270
+      spriteID: e8f0e03bdf7c6004aadd711757c7899a
+      internalID: -1374796844
       vertices: []
       indices: 
       edges: []
@@ -222,7 +222,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 6f244d15302f9bb45b246ba23f63215b
+    spriteID: 86551a032c00b3d46a2272817caccafc
     internalID: 0
     vertices: []
     indices: 
@@ -230,10 +230,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Dungeon Alchemyst - AnimHammer_0: 1535327130
-      Dungeon Alchemyst - AnimHammer_1: 1620472371
-      Dungeon Alchemyst - AnimHammer_2: -69135493
-      Dungeon Alchemyst - AnimHammer_3: -1472021270
+      Dungeon Alchemyst - AnimSword_0: 420613561
+      Dungeon Alchemyst - AnimSword_1: 1266792885
+      Dungeon Alchemyst - AnimSword_2: -1566687829
+      Dungeon Alchemyst - AnimSword_3: -1374796844
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
