@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Combat;
+using Combat.Player_Attacks.Combos;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -11,6 +12,8 @@ public class PlayerManager : MonoBehaviour
     public List<Attack> availableAttacks = new List<Attack>();
     public Attack FirstAttack;
     public Attack SecondAttack;
+    public Combo CurrentCombo;
+    public int CurrentComboBaseDamage;
     public GameObject shootOrigin;
 
     public Animator Animator { get; private set; }
@@ -42,6 +45,17 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public void SetCombo(Combo combo, Attack firstAttack, Attack secondAttack)
+    {
+        CurrentCombo = combo;
+        CurrentComboBaseDamage = firstAttack.baseDamage + secondAttack.baseDamage + 1;
+    }
+
+    public void ResetCombo()
+    {
+        CurrentCombo = Combo.NONE;
+        CurrentComboBaseDamage = 0;
+    }
 
     public void AddAttack(Attack attack)
     {

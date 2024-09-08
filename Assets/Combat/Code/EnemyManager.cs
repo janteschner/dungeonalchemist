@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Combat;
+using Combat.Player_Attacks.Combos;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -107,6 +108,63 @@ public class EnemyManager : MonoBehaviour
         }
 
         return new DamageNumberWithInfo(damage, attack.element, isWeak, isResistant, isImmune);
+    }
+
+    public DamageNumberWithInfo CalculateComboDamage(Combo combo, int baseDamage)
+    {
+        var element = ElementFunctions.GetComboElement(combo);
+        
+        int damage = baseDamage;
+        var isWeak = false;
+        var isResistant = false;
+        var isImmune = false;
+        if (_currentEnemyType.IsImmune(element))
+        {
+            isImmune = true;
+        }
+        else if (_currentEnemyType.IsResistant(element))
+        {
+            isResistant = true;
+        }
+        else if (_currentEnemyType.IsWeak(element))
+        {
+            isWeak = true;
+        }
+
+        if (combo == Combo.ICE_HAMMER && !(_currentEnemyType.IsImmune(Element.ICE) || _currentEnemyType.IsResistant(Element.ICE)))
+        {
+            isWeak = true;
+            isImmune = false;
+            isResistant = false;
+        }
+        if (combo == Combo.FLAME_BLADE && (_currentEnemyType.enemyName == "Goblin"))
+        {
+            isWeak = true;
+            isImmune = false;
+            isResistant = false;
+        }
+        if (combo == Combo.VOLT_BLADE && (_currentEnemyType.enemyName == "Goblin"))
+        {
+            isWeak = true;
+            isImmune = false;
+            isResistant = false;
+        }
+        
+
+        if (isImmune)
+        {
+            damage = 0;
+        }
+        if (isResistant)
+        {
+            damage = damage / 2;
+        }
+        if (isWeak)
+        {
+            damage = damage * 2;
+        }
+
+        return new DamageNumberWithInfo(damage, element, isWeak, isResistant, isImmune);
     }
     
     public void TakeDamage(DamageNumberWithInfo damageInfo)

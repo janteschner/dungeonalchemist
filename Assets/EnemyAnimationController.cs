@@ -55,7 +55,7 @@ public class EnemyAnimationController : MonoBehaviour
 
         }
 
-        BulletProjectile.OnProjectileHit += CombatManager.Instance.PlayerTurn;
+        // BulletProjectile.OnProjectileHit += CombatManager.Instance.PlayerTurn;
 
     }
 }
