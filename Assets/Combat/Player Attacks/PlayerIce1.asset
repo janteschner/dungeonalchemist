@@ -18,4 +18,4 @@ MonoBehaviour:
   element: 2
   isHealingPotion: 0
   statusEffect: 2
-  statusEffectChance: 0.2
+  statusEffectChance: 1
