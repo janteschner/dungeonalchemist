@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StartGame_Tween: MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class StartGame_Tween: MonoBehaviour
     private Vector2 screenHeightWidth;
 
     [SerializeField] private GameObject eyes;
+    [SerializeField] private GameObject restartButton;
     
     private void Awake()
     {
@@ -42,6 +44,7 @@ public class StartGame_Tween: MonoBehaviour
         screenHeightWidth.y = 1500;
         
         eyes.SetActive(false);
+        restartButton.SetActive(false);
 
         startButton = this.gameObject;
     }
@@ -95,5 +98,14 @@ public class StartGame_Tween: MonoBehaviour
         {
             eyes.SetActive(true);
         }
+        else
+        {
+            restartButton.SetActive(true);
+        }
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("FightScene");
     }
 }

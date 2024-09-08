@@ -67,6 +67,7 @@ public class EnemyManager : MonoBehaviour
     {
         _currentEnemyType = enemyType;
         Hp = enemyType.maxHealth;
+        CurrentStatusEffect = StatusEffect.NONE;
         currentPrefab = Instantiate(enemyType.prefab, new Vector3(4.5f, 0, -2), Quaternion.identity);
 
         spriteRenderer = currentPrefab.GetComponentInChildren<SpriteRenderer>();

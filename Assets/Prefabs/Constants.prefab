@@ -73,5 +73,5 @@ MonoBehaviour:
   voltWizard: {fileID: 11400000, guid: 01ff12fa70a3b474d8ecf209d16f86bc, type: 2}
   dragon: {fileID: 11400000, guid: 43126a9c18c64bd4698341e3d98b4c2b, type: 2}
   fireDragon: {fileID: 11400000, guid: 43126a9c18c64bd4698341e3d98b4c2b, type: 2}
-  iceDragon: {fileID: 11400000, guid: d6fa42650911c114c8440b4e240ebf3b, type: 2}
-  voltDragon: {fileID: 11400000, guid: cfa64fb15950e9e42815f2b63f44d90c, type: 2}
+  iceDragon: {fileID: 11400000, guid: 43126a9c18c64bd4698341e3d98b4c2b, type: 2}
+  voltDragon: {fileID: 11400000, guid: 43126a9c18c64bd4698341e3d98b4c2b, type: 2}

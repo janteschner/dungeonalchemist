@@ -28,6 +28,9 @@ public class LevelUpScript : MonoBehaviour
     [SerializeField] private Attack[] attacksToShow;
     [SerializeField] private ElementUpgradeTree[] _upgradeTrees;
     [SerializeField] private Attack healingPotion;
+    [SerializeField] private Attack instakill;
+    private bool hasInstakill = false;
+    
 
     
     private List<CardScript> cardScripts = new List<CardScript>();
@@ -36,12 +39,22 @@ public class LevelUpScript : MonoBehaviour
     void Start()
     {
         container.gameObject.SetActive(false);
+        //when the W key is pressed, call add instakill
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            AddInstakill();
+        }
+    }
+
+    public void AddInstakill()
+    {
+        hasInstakill = true;
+        PlayerManager.Instance.AddAttack(instakill);
     }
 
     public Attack[] GetStartingAttacks()
