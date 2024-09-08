@@ -1,0 +1,12 @@
+# Blender 4.2.0 MTL File: 'TorchModel.blend'
+# www.blender.org
+
+newmtl Material
+Ns 51.652905
+Ka 1.000000 1.000000 1.000000
+Kd 0.065251 0.013740 0.007063
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 3

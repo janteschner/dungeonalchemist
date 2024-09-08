@@ -11,6 +11,8 @@ public class EnemyManager : MonoBehaviour
 {
     public static EnemyManager Instance { get; private set; }
     private EnemyType _currentEnemyType;
+
+    public Attack CurrentAttack;
     private int hp;
 
     public Animator Animator { get; private set; }
@@ -54,9 +56,9 @@ public class EnemyManager : MonoBehaviour
 
     public Attack ChooseAttack()
     {
-        var randomAttack = _currentEnemyType.GetRandomAttack();
-        Debug.Log("Enemy chose attack " + randomAttack.attackName + " with " + randomAttack.baseDamage + " damage!");
-        return randomAttack;
+        CurrentAttack = _currentEnemyType.GetRandomAttack();
+        Debug.Log("Enemy chose attack " + CurrentAttack.attackName + " with " + CurrentAttack.baseDamage + " damage!");
+        return CurrentAttack;
     }
 
     public void PrepareForCombat(EnemyType enemyType)
