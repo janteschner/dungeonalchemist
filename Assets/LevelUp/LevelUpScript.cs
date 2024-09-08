@@ -262,6 +262,7 @@ public class LevelUpScript : MonoBehaviour
 
     private void AfterPlayerMadeChoice()
     {
+        EnemyProgression.Instance.AdvanceLevel();
         CombatManager.Instance.BeginNewCombat();
     }
 }

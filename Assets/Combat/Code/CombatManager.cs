@@ -54,7 +54,7 @@ public class CombatManager : MonoBehaviour
     public IEnumerator BeginAfter1Second()
     {
         yield return new WaitForSeconds(1);
-        BeginCombat(firstEnemy);
+        BeginCombat(EnemyProgression.Instance.GetEnemyForCurrentLevel());
     }
 
     public void BeginCombat(EnemyType enemyType)
