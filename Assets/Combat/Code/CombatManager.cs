@@ -185,8 +185,13 @@ public class CombatManager : MonoBehaviour
                     PlayFXOnHit(effectToPlay!.Value);
                 }
 
-                var firstAttackDamage = _enemy.CalculateDamage(secondAttack);
-                _enemy.TakeDamage(firstAttackDamage);
+                var secondAttackDamage = _enemy.CalculateDamage(secondAttack);
+                _enemy.TakeDamage(secondAttackDamage);
+                _enemy.MaybeTakeFireDamage();
+                if (_player.SecondAttack.statusEffect != StatusEffect.NONE)
+                {
+                    _enemy.MaybeApplyStatus(_player.SecondAttack.statusEffect, _player.SecondAttack.statusEffectChance);
+                }
 
                 _player.ResetChosenAttacks();
                 isSecondPlayerAttack = false;
@@ -204,6 +209,12 @@ public class CombatManager : MonoBehaviour
 
                 var firstAttackDamage = _enemy.CalculateDamage(firstAttack);
                 _enemy.TakeDamage(firstAttackDamage);
+                _enemy.MaybeTakeFireDamage();
+
+                if (_player.FirstAttack.statusEffect != StatusEffect.NONE)
+                {
+                    _enemy.MaybeApplyStatus(_player.FirstAttack.statusEffect, _player.FirstAttack.statusEffectChance);
+                }
                 isSecondPlayerAttack = true;
             }
         }
@@ -343,6 +354,7 @@ public class CombatManager : MonoBehaviour
         NotebookScript.Instance.AddAttack(_enemy.CurrentEnemyType, attack);
         _player.TakeDamage(damage);
 
+        
     }
 
     public void EndCombat()

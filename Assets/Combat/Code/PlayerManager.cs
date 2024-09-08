@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Combat;
 using Combat.Player_Attacks.Combos;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -109,7 +110,12 @@ public class PlayerManager : MonoBehaviour
     
     public DamageNumberWithInfo CalculateDamage(Attack attack)
     {
-        return new DamageNumberWithInfo(attack.baseDamage, attack.element, false, false, false);
+        var damage = attack.baseDamage;
+        if (EnemyManager.Instance.CurrentStatusEffect == StatusEffect.PARALYSIS)
+        {
+            damage /= 2;
+        }
+        return new DamageNumberWithInfo(damage, attack.element, false, false, false);
     }
 
     public void TakeDamage(DamageNumberWithInfo damageInfo)
