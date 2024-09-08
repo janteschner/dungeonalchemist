@@ -283,18 +283,32 @@ public class CombatManager : MonoBehaviour
             ComboTurn();
             return;
         }
-        
+
+        SetAttackByElement(PlayerManager.Instance.FirstAttack.element);
         Debug.Log("First Player turn and the selected attacks are " + _player.FirstAttack.attackName + " and " + _player.SecondAttack.attackName);
         isPlayerTurn = true;
 
+    }
+
+
+    public void SecondPlayerTurn()
+    {
+        Debug.Log("Second Player turn and the selected attacks are " + _player.FirstAttack.attackName + " and " + _player.SecondAttack.attackName);
+        isPlayerTurn = false;
+
+        SetAttackByElement(PlayerManager.Instance.SecondAttack.element);
+    }
+
+    public void SetAttackByElement(Element _element)
+    {
         // Elemental Attacks are Shoot
-        if (ElementFunctions.IsMagicalElement(PlayerManager.Instance.FirstAttack.element))
+        if (ElementFunctions.IsMagicalElement(_element))
         {
             PlayerManager.Instance.Animator.SetTrigger("Shoot");
         }
-        else 
+        else
         {
-            PlayerManager.Instance.Animator.SetTrigger("Move");
+            PlayerManager.Instance.Animator.SetInteger("ChoseAttack", (int)_element);
         }
     }
 
@@ -312,21 +326,6 @@ public class CombatManager : MonoBehaviour
         
     }
 
-    public void SecondPlayerTurn()
-    {
-        Debug.Log("Second Player turn and the selected attacks are " + _player.FirstAttack.attackName + " and " + _player.SecondAttack.attackName);
-        isPlayerTurn = false;
-
-        // Elemental attacks are Shoot
-        if (ElementFunctions.IsMagicalElement(PlayerManager.Instance.SecondAttack.element))
-        {
-            PlayerManager.Instance.Animator.SetTrigger("Shoot");
-        }
-        else
-        {
-            PlayerManager.Instance.Animator.SetTrigger("Move");
-        }
-    }
 
     public Effects? GetFXOnHit(Element element)
     {

@@ -973,6 +973,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Background
       objectReference: {fileID: 0}
+    - target: {fileID: 7440963610345050968, guid: 4025cc9d5ec39c74ea814216f76f0216, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1127,6 +1131,10 @@ PrefabInstance:
     - target: {fileID: 2399888823981529160, guid: 4fbb9fb9a3d0f6a4eb8ff7fe2071e432, type: 3}
       propertyPath: m_Name
       value: LevelUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2399888823981529160, guid: 4fbb9fb9a3d0f6a4eb8ff7fe2071e432, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6309686905202215390, guid: 4fbb9fb9a3d0f6a4eb8ff7fe2071e432, type: 3}
       propertyPath: m_LocalPosition.x
